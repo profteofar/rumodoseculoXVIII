@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="pt-PT"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rumo do Século XVIII · Alunos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap">
+<style>
+/* Layout: faixa de navegação + coluna central de leitura (max 920px); níveis como cores hipsométricas de um mapa de relevo */
+:root{
+  --bg:#f2f5f3; --paper:#ffffff; --ink:#1d2a2c; --muted:#5b6b6a; --line:#d5dfdb;
+  --sea:#1e5b86; --sea-soft:#e3eef6; --gold:#b8860b;
+  --lv-c:#5f9a4b; --lv-c-soft:#e5f0de;
+  --lv-b:#c9952c; --lv-b-soft:#f7ecd3;
+  --lv-a:#8a5436; --lv-a-soft:#f1e3da;
+  --ok:#2f7d4a; --ok-soft:#e2f2e7; --bad:#b23a3a; --bad-soft:#f8e3e1; --warn:#9a6a00;
+  --f-display:"Alegreya","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --f-body:"Alegreya Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131b1d; --paper:#1b2528; --ink:#e6ece9; --muted:#9aaaa7; --line:#304044;
+  --sea:#7db4dc; --sea-soft:#1d3240; --gold:#e0b44a;
+  --lv-c:#86c070; --lv-c-soft:#22331d; --lv-b:#e2b350; --lv-b-soft:#3a2f17; --lv-a:#d39874; --lv-a-soft:#3b2820;
+  --ok:#6cc28a; --ok-soft:#1c3324; --bad:#ec8a84; --bad-soft:#3d2120; --warn:#e3b04b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131b1d; --paper:#1b2528; --ink:#e6ece9; --muted:#9aaaa7; --line:#304044;
+  --sea:#7db4dc; --sea-soft:#1d3240; --gold:#e0b44a;
+  --lv-c:#86c070; --lv-c-soft:#22331d; --lv-b:#e2b350; --lv-b-soft:#3a2f17; --lv-a:#d39874; --lv-a-soft:#3b2820;
+  --ok:#6cc28a; --ok-soft:#1c3324; --bad:#ec8a84; --bad-soft:#3d2120; --warn:#e3b04b; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+img{max-width:100%}
+[hidden]{display:none!important}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:2.1rem}h2{font-size:1.6rem}h3{font-size:1.25rem}
+p{margin:0}
+a{color:var(--sea)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.wrap{max-width:920px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* topo */
+header.top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+.top .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:8px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:1.15rem;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.brand svg{flex:none}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav.tabs button{border:0;background:transparent;color:var(--muted);padding:7px 12px;border-radius:999px;font-weight:600;font-size:.95rem}
+nav.tabs button[aria-current="page"]{background:var(--sea-soft);color:var(--sea)}
+nav.tabs button:hover{color:var(--ink)}
+main{padding-block:22px 60px}
+.view{display:flex;flex-direction:column;gap:20px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;font-weight:700;color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.btn{border:1px solid var(--sea);background:var(--sea);color:var(--paper);padding:9px 16px;border-radius:8px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--sea)}
+.btn.quiet{border-color:var(--line);background:transparent;color:var(--muted);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:5px 11px;font-size:.9rem}
+input[type=text],input[type=email],input[type=url],textarea,select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:8px 10px;max-width:100%}
+textarea{width:100%;min-height:110px;resize:vertical}
+label.f{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:.95rem;flex:1 1 220px;min-width:0}
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:center}
+.hero h1{font-size:2.5rem}
+.hero .lead{font-size:1.15rem;color:var(--muted);margin-top:8px}
+.hero figure{margin:0}
+.hero img{border-radius:var(--r);display:block}
+.hero figcaption{font-size:.8rem;color:var(--muted);margin-top:4px}
+@media (max-width:700px){.hero{grid-template-columns:1fr}.hero h1{font-size:2rem}}
+.areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.area{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;color:var(--ink)}
+.area:hover{border-color:var(--sea)}
+.area b{font-family:var(--f-display);font-size:1.2rem}
+.who{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.linkish{border:0;background:none;color:var(--muted);text-decoration:underline;padding:0;font-size:.85rem}
+/* perfil de relevo */
+.profile{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 4px;overflow-x:auto}
+.profile svg{display:block;width:100%;min-width:560px;height:auto}
+.profile text{font-family:var(--f-body);fill:var(--ink)}
+.profile .lbl{font-size:13px;font-weight:700}
+.profile .alt{font-size:11px;fill:var(--muted)}
+.mk{cursor:pointer}
+.mk circle{stroke:var(--paper);stroke-width:3}
+.mk.locked{cursor:not-allowed;opacity:.45}
+.mk text{font-size:11px;font-weight:700;fill:var(--paper)}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.lvcard{border-top:6px solid var(--lvc);display:flex;flex-direction:column;gap:10px}
+.lvcard h3 span{font-family:var(--f-body);font-size:.85rem;color:var(--muted);font-weight:600;display:block}
+.stagelist{display:flex;flex-direction:column;gap:6px}
+.stagebtn{display:flex;gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 10px}
+.stagebtn:disabled{opacity:.5;cursor:not-allowed}
+.stagebtn .dot{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:.8rem;font-weight:700;color:var(--paper);background:var(--lvc)}
+.stagebtn .st{margin-left:auto;font-size:.8rem;color:var(--muted);white-space:nowrap}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--lvc,var(--sea));border-radius:99px}
+.lock{font-size:.85rem;color:var(--muted)}
+/* etapa */
+.stagehead{border-left:6px solid var(--lvc);padding-left:14px}
+.learn{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.learn{grid-template-columns:1fr}}
+.learn .card h4{font-size:1.05rem;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.learn .concept{grid-column:1/-1}
+.concept p+p{margin-top:8px}
+dl.terms{margin:0;display:flex;flex-direction:column;gap:6px}
+dl.terms dt{font-weight:700;display:inline}
+dl.terms dd{margin:0;display:inline}
+ul.mis{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.ex{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:12px}
+.ex .qn{display:flex;gap:10px;align-items:flex-start}
+.ex .qn .n{flex:none;font-family:var(--f-display);font-weight:700;color:var(--paper);background:var(--lvc,var(--sea));border-radius:6px;min-width:30px;text-align:center;padding:1px 6px}
+.ex .qn > div{min-width:0}
+.ex.done-ok{border-color:var(--ok)}
+.ex.done-part{border-color:var(--warn)}
+.ex.done-bad{border-color:var(--bad)}
+.figs{display:flex;gap:10px;flex-wrap:wrap}
+.figs figure{margin:0;flex:1 1 220px;max-width:520px}
+.figs img{display:block;border-radius:8px;max-height:340px;object-fit:contain;background:var(--bg)}
+.figs figcaption{font-size:.8rem;color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 12px;border-radius:8px}
+.opt .box{flex:none;width:20px;height:20px;border:2px solid var(--muted);border-radius:50%;margin-top:2px}
+.opt.multi .box{border-radius:4px}
+.opt[aria-pressed="true"]{border-color:var(--sea);background:var(--sea-soft)}
+.opt[aria-pressed="true"] .box{background:var(--sea);border-color:var(--sea)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.miss{border-color:var(--ok);border-style:dashed}
+.fb{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.fb.ok{background:var(--ok-soft);border:1px solid var(--ok)}
+.fb.part{background:var(--lv-b-soft);border:1px solid var(--warn)}
+.fb.bad{background:var(--bad-soft);border:1px solid var(--bad)}
+.fb b.h{display:block}
+.tfrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px dashed var(--line);padding-block:6px}
+.tfrow .fix{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--bg);color:var(--ink);padding:5px 12px;font-weight:700}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--sea);color:var(--paper)}
+.seg button.ok{background:var(--ok);color:var(--paper)}
+.seg button.bad{background:var(--bad);color:var(--paper)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.match{grid-template-columns:1fr}}
+.match .col{display:flex;flex-direction:column;gap:6px;min-width:0}
+.mitem{text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 10px;display:flex;gap:8px;align-items:center}
+.mitem .tag{flex:none;min-width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:var(--line);color:var(--ink)}
+.mitem.sel{border-color:var(--sea);box-shadow:0 0 0 2px var(--sea-soft)}
+.mitem.ok{border-color:var(--ok)} .mitem.bad{border-color:var(--bad)}
+.fill{line-height:2.3}
+.fill select,.fill input{padding:3px 6px;margin:0 2px;max-width:200px}
+.fill .ok{border-color:var(--ok);background:var(--ok-soft)} .fill .bad{border-color:var(--bad);background:var(--bad-soft)}
+.bank{display:flex;gap:6px;flex-wrap:wrap}
+.bank span{border:1px dashed var(--muted);border-radius:6px;padding:1px 8px;font-size:.9rem}
+.hot{position:relative;display:block;width:fit-content;max-width:100%;align-self:flex-start;line-height:0;cursor:crosshair}
+.hot img{display:block;border-radius:8px;max-height:none;width:auto;max-width:100%}
+.hot .rg{position:absolute;border:2px solid var(--sea);background:color-mix(in srgb,var(--sea) 22%,transparent);border-radius:6px;display:grid;place-items:center;line-height:1.1;font-size:.8rem;font-weight:700;color:var(--ink);pointer-events:none;text-align:center}
+.hot .rg span{background:var(--paper);padding:1px 5px;border-radius:4px}
+.hot .rg.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.hot .rg.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 25%,transparent)}
+.hot .rg.miss{border-style:dashed;border-color:var(--ok);background:transparent}
+.hot .pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:3px solid var(--paper);display:grid;place-items:center;font-size:.75rem;font-weight:700;color:var(--paper);line-height:1;pointer-events:none}
+.seqlist{display:flex;flex-direction:column;gap:4px}
+.seqlist div{padding:4px 8px;border-radius:6px}
+.seqlist .cur{background:var(--sea-soft);font-weight:700}
+.imgpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.imgpick button{border:3px solid transparent;background:var(--bg);border-radius:10px;padding:4px;display:flex;flex-direction:column;gap:4px;color:var(--ink);font-weight:700;font-size:.85rem}
+.imgpick img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:7px;display:block}
+.imgpick button[aria-pressed="true"]{border-color:var(--sea)}
+.imgpick button.ok{border-color:var(--ok)} .imgpick button.bad{border-color:var(--bad)} .imgpick button.miss{border-color:var(--ok);border-style:dashed}
+.sortrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px dashed var(--line);padding-block:6px}
+.sortrow > span:first-child{flex:1 1 200px;min-width:0}
+.sortrow.ok > span:first-child::after{content:" ✓";color:var(--ok);font-weight:700}
+.sortrow.bad > span:first-child::after{content:" ✗";color:var(--bad);font-weight:700}
+.olist{display:flex;flex-direction:column;gap:6px}
+.oitem{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:6px 8px}
+.oitem .num{font-weight:700;min-width:22px}
+.oitem .t{flex:1;min-width:0}
+.oitem button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;width:34px;height:30px}
+.oitem.ok{border-color:var(--ok)} .oitem.bad{border-color:var(--bad)}
+.gridq{display:flex;flex-direction:column;gap:10px}
+.gridq .gr{display:flex;flex-direction:column;gap:6px}
+.gridq .gr .chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 12px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:var(--paper)}
+.chip.ok{background:var(--ok);border-color:var(--ok);color:var(--paper)}
+.chip.bad{background:var(--bad);border-color:var(--bad);color:var(--paper)}
+.chip.miss{border-color:var(--ok);border-style:dashed}
+.kwlist{margin:4px 0 0;padding-left:18px}
+.kwlist li.got{color:var(--ok)} .kwlist li.no{color:var(--bad)}
+.recap{border-left:6px solid var(--lvc);background:var(--paper)}
+.recap ul{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700;background:var(--sea-soft);color:var(--sea)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.warn{background:var(--lv-b-soft);color:var(--warn)}
+/* lab */
+.labsteps{display:flex;gap:6px}
+.labsteps i{flex:1;height:6px;border-radius:99px;background:var(--line)}
+.labsteps i.on{background:var(--sea)} .labsteps i.okk{background:var(--ok)}
+.analogy{background:var(--sea-soft);border-radius:8px;padding:10px 12px;font-weight:600}
+/* teste */
+.tprog{display:flex;gap:3px}
+.tprog i{flex:1;height:8px;border-radius:3px;background:var(--line)}
+.tprog i.d{background:var(--sea)} .tprog i.c{background:var(--ink)}
+.tag{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tag.dC{color:var(--lv-c);border-color:var(--lv-c)} .tag.dB{color:var(--warn);border-color:var(--lv-b)} .tag.dA{color:var(--lv-a);border-color:var(--lv-a)}
+.score{font-family:var(--f-display);font-size:3rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.cbars{display:flex;flex-direction:column;gap:8px}
+.cbar{display:grid;grid-template-columns:minmax(120px,240px) 1fr 52px;gap:10px;align-items:center;font-size:.95rem}
+.cbar .bar i{background:var(--c)}
+.cbar b{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.cbar{grid-template-columns:1fr 52px}.cbar .bar{grid-column:1/-1;grid-row:2}}
+.errs{display:flex;flex-direction:column;gap:10px}
+.err{border-left:4px solid var(--bad);padding:6px 12px;background:var(--paper);border-radius:0 8px 8px 0}
+.plan{counter-reset:p;display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.plan li{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.plan li > div{flex:1 1 260px;min-width:0}
+/* glossário */
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.gl div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.gl b{font-family:var(--f-display);font-size:1.05rem;display:block}
+/* professor */
+.prof h3{margin-top:6px}
+.prof section{display:flex;flex-direction:column;gap:10px}
+.prof ul,.prof ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.prof table{border-collapse:collapse;width:100%;font-size:.95rem}
+.prof th,.prof td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.prof th{background:var(--bg)}
+.tablewrap{overflow-x:auto}
+pre.code{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.82rem;line-height:1.4;max-height:360px}
+.status{font-size:.9rem;font-weight:600}
+.status.ok{color:var(--ok)} .status.bad{color:var(--bad)}
+.gate{max-width:520px}
+@media (prefers-reduced-motion:no-preference){.ex,.card{transition:border-color .2s}}
+
+</style>
+<script id="app-config">window.APP_CONFIG={"mode":"aluno","email":"","gas":"https://script.google.com/macros/s/AKfycbzCzFDTWxQ7t-Eywm-aLo4SV4sTBZrxtFi-LRSq_qfCjNkpSL7iie_L2YBiOuE-KoYmyg/exec"};</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="30" height="22" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 22 L8 12 L12 15 L19 4 L30 22 Z" fill="var(--lv-a)"></path><path d="M0 22 L8 12 L12 15 L15.5 10 L22 22 Z" fill="var(--lv-b)"></path><path d="M0 22 L6 15 L10 18 L14 22 Z" fill="var(--lv-c)"></path></svg>
+      Rumo do Século XVIII
+    </div>
+    <nav class="tabs" aria-label="Secções">
+      <button type="button" data-v="inicio">Início</button>
+      <button type="button" data-v="percurso">Percurso</button>
+      <button type="button" data-v="laboratorio">Laboratório</button>
+      <button type="button" data-v="teste">Teste</button>
+      <button type="button" data-v="glossario">Glossário</button>
+      <button type="button" data-v="professor" id="tab-prof">Professor</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="view" id="view-inicio"></div>
+  <div class="view" id="view-percurso" hidden=""></div>
+  <div class="view" id="view-laboratorio" hidden=""></div>
+  <div class="view" id="view-teste" hidden=""></div>
+  <div class="view" id="view-glossario" hidden=""></div>
+  <div class="view" id="view-professor" hidden="">
+
+  </div>
+</main>
+<script>
+/* ===================== CONTEÚDOS ===================== */
+var CONCEPTS = {
+  imperio:     {n:"Império e Brasil", etapa:"C1", lab:"L1"},
+  engenho:     {n:"Engenho e escravatura", etapa:"B1", lab:"L2"},
+  ouro:        {n:"Ouro, bandeirantes e quinto", etapa:"A1", lab:"L3"},
+  absolutismo: {n:"Monarquia absoluta", etapa:"A2", lab:"L4"},
+  barroco:     {n:"Arte barroca e obras de D. João V", etapa:"B2", lab:"L5"},
+  sociedade:   {n:"Sociedade de ordens", etapa:"B3", lab:"L6"},
+  inquisicao:  {n:"Inquisição e autos de fé", etapa:"A3", lab:"L6"},
+  terramoto:   {n:"Terramoto e Lisboa pombalina", etapa:"C4", lab:"L7"},
+  pombal:      {n:"Reformas do Marquês de Pombal", etapa:"A4", lab:"L8"},
+  tempo:       {n:"Tempo histórico e leitura de fontes", etapa:"A4", lab:"L8"}
+};
+
+var MIS = {
+  m_oriente:"Pensar que, no século XVIII, a riqueza do império vinha das especiarias do Oriente (vinha sobretudo do Brasil).",
+  m_indios:"Pensar que a principal mão de obra dos engenhos eram os indígenas (eram pessoas escravizadas trazidas de África).",
+  m_trafico:"Trocar o sentido do tráfico de pessoas escravizadas (era de África para o Brasil).",
+  m_burguesia:"Julgar que a burguesia era um grupo privilegiado (fazia parte do povo e pagava impostos).",
+  m_cortes:"Achar que o rei absoluto governava ouvindo as Cortes (D. João V nunca as reuniu).",
+  m_reis:"Confundir D. João V com D. José I (o Marquês de Pombal foi ministro de D. José I).",
+  m_quinto:"Não perceber o quinto: o rei ficava com 1/5 (20%) do ouro extraído.",
+  m_barroco:"Confundir o barroco com estilos simples (colunas lisas, ferro e vidro, linhas retas).",
+  m_obras:"Atribuir a D. João V obras de outras épocas ou de outras pessoas (Batalha, Torre dos Clérigos, Assembleia da República).",
+  m_inquisicao:"Achar que a Inquisição era dirigida pela nobreza ou pelo rei (era dirigida pelo clero).",
+  m_vitimas:"Pensar que as principais vítimas eram muçulmanos ou judeus declarados (eram sobretudo cristãos-novos).",
+  m_ruas:"Imaginar a Lisboa pombalina com ruas estreitas e irregulares (essa era a Lisboa antiga).",
+  m_escravatura:"Pensar que Pombal acabou com a escravatura em todo o império (só proibiu a entrada de pessoas escravizadas no reino).",
+  m_seculo:"Errar a correspondência entre o ano e o século (1706 pertence ao século XVIII).",
+  m_balanca:"Confundir importações (o que se compra) com exportações (o que se vende).",
+  m_nascimento:"Pensar que só se podia ser nobre por nascimento (o rei podia dar títulos de nobreza a burgueses ricos)."
+};
+
+/* Tipos de exercício: choice, multi, tf, match, fill, hotmulti, hotseq, open, short, imgpick, sort, order, grid */
+var LEVELS = [
+ {id:"C", nome:"Planície", sub:"Nível C · primeiros passos", cor:"var(--lv-c)", alt:"0–200 m",
+  intro:"Começas na planície: perguntas curtas, muitas imagens e escolhas guiadas. Aqui ficas a conhecer as personagens e os lugares do século XVIII.",
+  etapas:[
+  {id:"C1", t:"Um império virado para o Brasil",
+   conceito:"<p>Um <b>império</b> é um conjunto de territórios governados por um só país. No século XVII, Portugal tinha territórios em <b>quatro continentes</b>: Europa, África, Ásia e América.</p><p>No Oriente (Ásia), os portugueses perderam lucros e territórios. Por isso viraram-se para o <b>Brasil</b>, que se tornou a colónia mais importante. Lá produzia-se <b>açúcar</b> nos <b>engenhos</b>, com o trabalho de pessoas escravizadas trazidas de <b>África</b>.</p>",
+   termos:[["Império","conjunto de territórios dominados por um país."],["Colónia","território governado e explorado por outro país."],["Engenho","grande propriedade onde se plantava cana e se fazia açúcar."],["Bandeirantes","exploradores que partiam do litoral para o interior do Brasil."]],
+   exemplo:"O açúcar que hoje pões no leite era, no século XVII, um produto raro e caro. Uma caixa de açúcar do Brasil valia muito dinheiro em Lisboa, Amesterdão ou Londres.",
+   equivocos:["O Brasil não era um país independente: era uma colónia portuguesa (só se tornou independente em 1822).","Os trabalhadores dos engenhos não recebiam salário: eram pessoas escravizadas."],
+   ex:[
+    {id:"c1a", type:"hotmulti", q:"Clica nos <b>quatro continentes</b> onde Portugal tinha territórios nos finais do século XVII. Depois carrega em «Verificar».", img:"mapa-imperio-seculo-xvii.jpg",
+     regions:[{n:"Europa",r:[38,3,62,30],ok:1},{n:"Ásia",r:[62,3,100,56],ok:1},{n:"África",r:[32,31,61,74],ok:1},{n:"América do Sul",r:[8,42,32,82],ok:1},{n:"América do Norte",r:[0,3,30,41],ok:0},{n:"Oceânia",r:[76,57,100,85],ok:0}],
+     exp:"Europa (Portugal, Açores, Madeira), África (Cabo Verde, Guiné, São Tomé e Príncipe, Angola, Moçambique), Ásia (Goa, Damão, Diu, Macau, Timor) e América (Brasil)."},
+    {id:"c1b", type:"choice", q:"Qual era a colónia portuguesa mais importante no século XVIII?", opts:["Índia","Brasil","Angola","Moçambique"], ans:1, mis:{0:"m_oriente"}, exp:"O Brasil dava açúcar, ouro e diamantes. Era a «joia» do império."},
+    {id:"c1c", type:"choice", q:"Observa o engenho. Que produto se fazia nos engenhos brasileiros?", img:"engenho-pernambuco.jpg", opts:["Ouro","Açúcar","Café","Especiarias"], ans:1, exp:"No engenho, a cana-de-açúcar era esmagada na moenda e o caldo era cozido até virar açúcar."},
+    {id:"c1d", type:"choice", q:"Quem trabalhava nos engenhos brasileiros?", opts:["Pessoas escravizadas","Nobres portugueses","Bandeirantes","Missionários"], ans:0, mis:{}, exp:"O trabalho duro dos canaviais e do engenho era feito por pessoas escravizadas."},
+    {id:"c1e", type:"choice", q:"De que continente vinha a maioria desses trabalhadores?", opts:["Europa","Ásia","África","América"], ans:2, mis:{3:"m_indios"}, exp:"Eram trazidos de África em navios negreiros, atravessando o oceano Atlântico."},
+    {id:"c1f", type:"match", q:"Liga cada parte do engenho à sua descrição. Clica num elemento da esquerda e depois no da direita.", left:["Casa grande","Engenho","Sanzala","Canavial"], right:["Local onde viviam os escravos","Casa onde vivia o senhor do engenho","Plantação de cana-de-açúcar","Fábrica onde se fazia açúcar"], ans:[1,3,0,2], exp:"Casa grande → senhor; engenho → fábrica; sanzala → pessoas escravizadas; canavial → plantação."},
+    {id:"c1g", type:"fill", q:"Completa o que diz o bandeirante. Escolhe as palavras da lista.", img:"bandeirantes.jpg", text:"Nós somos bandeirantes. Somos {0} e partimos do {1} para o interior do {2}, à procura de novas riquezas. Nas nossas explorações descobrimos grandes quantidades de {3} e de {4}.", gaps:[["exploradores"],["litoral"],["Brasil"],["ouro"],["diamantes"]], bank:["exploradores","litoral","Brasil","ouro","diamantes"], group:{3:"r",4:"r"}, exp:"Os bandeirantes descobriram ouro e diamantes no interior (Minas Gerais, Goiás, Mato Grosso)."}
+   ]},
+  {id:"C2", t:"D. João V, o rei do ouro",
+   conceito:"<p><b>D. João V</b> reinou de <b>1706 a 1750</b>. Com o ouro e os diamantes do Brasil ficou muito rico. A sua <b>corte</b> era <b>rica e luxuosa</b>: bailes, banquetes, ópera, coches dourados.</p><p>Mandou construir obras grandiosas: o <b>Palácio-Convento de Mafra</b>, o <b>Aqueduto das Águas Livres</b> (Lisboa) e a <b>Biblioteca Joanina</b> (Coimbra). O estilo da época é o <b>barroco</b>: muita decoração, curvas, <b>talha dourada</b> e azulejos.</p>",
+   termos:[["Corte","o rei, a família real e os nobres que viviam perto dele."],["Barroco","estilo artístico do século XVIII, exuberante e cheio de decoração."],["Talha dourada","madeira esculpida e coberta de folha de ouro."],["Coche","carruagem de luxo puxada por cavalos."]],
+   exemplo:"No Museu Nacional dos Coches, em Lisboa, ainda podes ver carruagens decoradas com talha dourada, como as que a corte usava.",
+   equivocos:["Nem tudo o que é antigo foi feito por D. João V: o Mosteiro da Batalha é muito mais antigo (gótico, séculos XIV–XV).","Barroco não é «simples»: é o contrário, quanto mais decoração melhor."],
+   ex:[
+    {id:"c2a", type:"choice", q:"Como se chama o rei representado no retrato?", img:"d-joao-v.jpg", opts:["D. Manuel I","D. João V","D. José I","D. Afonso Henriques"], ans:1, mis:{2:"m_reis"}, exp:"É D. João V, o Magnânimo, rei entre 1706 e 1750."},
+    {id:"c2b", type:"choice", q:"Escolhe a frase correta.", opts:["A corte de D. João V era pobre e vivia com dificuldades.","A corte de D. João V era rica e luxuosa."], ans:1, exp:"O ouro do Brasil pagava festas, banquetes, roupas à moda francesa e coches dourados."},
+    {id:"c2c", type:"imgpick", q:"Seleciona as obras que D. João V mandou construir.", imgs:[{src:"mafra.jpg",cap:"Fig. 4"},{src:"assembleia-republica.jpg",cap:"Fig. 5"},{src:"mosteiro-batalha.jpg",cap:"Fig. 6"},{src:"aqueduto.jpg",cap:"Fig. 7"}], ans:[0,3], mis:{1:"m_obras",2:"m_obras"}, exp:"Fig. 4: Palácio-Convento de Mafra. Fig. 7: Aqueduto das Águas Livres. A Fig. 5 é o Palácio de São Bento (hoje Assembleia da República) e a Fig. 6 é o Mosteiro da Batalha, gótico, construído séculos antes."},
+    {id:"c2d", type:"choice", q:"A que estilo artístico pertence o interior desta igreja?", img:"igreja-santa-clara-porto.jpg", cap:"Igreja de Santa Clara, Porto", opts:["Gótico","Manuelino","Barroco","Românico"], ans:2, mis:{0:"m_barroco"}, exp:"Paredes cobertas de talha dourada e decoração por todo o lado: é barroco."},
+    {id:"c2e", type:"multi", q:"Seleciona as características decorativas que vês na igreja.", img:"igreja-santa-clara-porto.jpg", opts:["Muita decoração","Gosto por colunas lisas","Uso de talha dourada","Uso de ferro e vidro"], ans:[0,2], mis:{1:"m_barroco",3:"m_barroco"}, exp:"O barroco tem «horror ao vazio»: muita decoração e talha dourada. Ferro e vidro são materiais do século XIX."}
+   ]},
+  {id:"C3", t:"Uma cerimónia em Lisboa",
+   conceito:"<p>A sociedade do século XVIII tinha três grupos: <b>clero</b>, <b>nobreza</b> e <b>povo</b>. O clero e a nobreza eram <b>privilegiados</b> (não pagavam impostos).</p><p>O clero dirigia o <b>Tribunal da Inquisição</b> (ou Santo Ofício), que perseguia quem não seguisse a religião católica. As sentenças eram lidas numa cerimónia pública: o <b>auto de fé</b>. As principais vítimas eram os <b>cristãos-novos</b>, descendentes de judeus obrigados a tornar-se cristãos.</p>",
+   termos:[["Privilegiado","quem tinha direitos especiais, como não pagar impostos."],["Inquisição","tribunal religioso dirigido pelo clero."],["Auto de fé","cerimónia pública onde se liam as sentenças da Inquisição."],["Cristão-novo","descendente de judeus convertidos à força ao cristianismo."]],
+   exemplo:"O Terreiro do Paço e o Rossio, em Lisboa, encheram-se muitas vezes de gente para assistir a autos de fé, como se fosse um espetáculo.",
+   equivocos:["A Inquisição não era um tribunal do rei nem da nobreza: era dirigida pelo clero.","«Cristão-novo» não é alguém que acabou de nascer: é um descendente de judeus convertidos."],
+   ex:[
+    {id:"c3a", type:"choice", q:"Na figura está representado um…", img:"auto-de-fe.jpg", cap:"Lisboa, século XVIII", opts:["auto de fé","momento festivo","acontecimento régio"], ans:0, exp:"É um auto de fé: a leitura pública das sentenças da Inquisição."},
+    {id:"c3b", type:"choice", q:"As principais vítimas desta cerimónia eram:", opts:["muçulmanos","cristãos-novos","burgueses"], ans:1, mis:{0:"m_vitimas"}, exp:"Os cristãos-novos eram acusados de continuar a praticar o judaísmo em segredo."},
+    {id:"c3c", type:"choice", q:"A cerimónia era liderada por membros…", opts:["do clero","da nobreza","da burguesia"], ans:0, mis:{1:"m_inquisicao"}, exp:"O Tribunal da Inquisição pertencia à Igreja e era dirigido pelo clero."},
+    {id:"c3d", type:"choice", q:"A cerimónia da figura ocorreu na cidade de:", opts:["Braga","Faro","Lisboa"], ans:2, exp:"A legenda diz «Lisboa, século XVIII»."},
+    {id:"c3e", type:"sort", q:"Classifica cada grupo social.", cats:["Privilegiado","Não privilegiado"], items:[{t:"Clero",c:0},{t:"Nobreza",c:0},{t:"Povo",c:1},{t:"Burguesia",c:1,mis:"m_burguesia"}], exp:"Só o clero e a nobreza eram privilegiados. A burguesia, mesmo rica, fazia parte do povo."}
+   ]},
+  {id:"C4", t:"O dia em que a terra tremeu",
+   conceito:"<p>No dia <b>1 de novembro de 1755</b>, Dia de Todos os Santos, <b>Lisboa</b> foi destruída por um <b>terramoto</b>, seguido de um <b>maremoto</b> (ondas gigantes) e de <b>incêndios</b>.</p><p>Reinava <b>D. José I</b>. O seu ministro, Sebastião José de Carvalho e Melo, o futuro <b>Marquês de Pombal</b>, dirigiu a reconstrução. A nova Baixa teve <b>ruas largas e paralelas</b>, prédios da mesma altura e <b>edifícios antissísmicos</b>.</p>",
+   termos:[["Terramoto","forte tremor de terra (sismo)."],["Maremoto","ondas gigantes provocadas por um sismo no mar (tsunami)."],["Antissísmico","construído para resistir aos tremores de terra."],["Baixa pombalina","zona de Lisboa reconstruída após 1755."]],
+   exemplo:"Se fores à Rua Augusta, em Lisboa, vês ruas retas que se cruzam como num tabuleiro de xadrez. Foram desenhadas depois do terramoto.",
+   equivocos:["Não foi D. João V quem reconstruiu Lisboa: ele morreu em 1750. Reinava D. José I.","A estátua da Praça do Comércio é de D. José I, não do Marquês de Pombal."],
+   ex:[
+    {id:"c4a", type:"choice", q:"Que cidade foi destruída a 1 de novembro de 1755?", img:"terramoto-1755.jpg", opts:["Porto","Coimbra","Lisboa","Braga"], ans:2, exp:"Lisboa, a capital, ficou em grande parte destruída."},
+    {id:"c4b", type:"multi", q:"Que desastres destruíram a cidade? Seleciona três.", opts:["Terramoto","Maremoto","Erupção de um vulcão","Incêndios","Cheia do rio"], ans:[0,1,3], exp:"Primeiro o terramoto, depois o maremoto vindo do Tejo e por fim incêndios que duraram dias."},
+    {id:"c4c", type:"choice", q:"Quem foi responsável pela reconstrução da cidade?", opts:["D. João V","Marquês de Pombal","Nicolau Nasoni","Padre António Vieira"], ans:1, mis:{0:"m_reis"}, exp:"O ministro de D. José I, mais tarde Marquês de Pombal."},
+    {id:"c4d", type:"multi", q:"Seleciona as características da Lisboa pombalina.", img:"praca-do-comercio.jpg", opts:["Ruas irregulares","Ruas largas e paralelas","Edifícios antissísmicos","Edifícios de ferro e vidro"], ans:[1,2], mis:{0:"m_ruas"}, exp:"Ruas largas e paralelas e prédios com a «gaiola» antissísmica de madeira."},
+    {id:"c4e", type:"choice", q:"Que rei está representado na estátua da Praça do Comércio?", opts:["D. João V","D. José I","D. João VI","D. Afonso VI"], ans:1, mis:{0:"m_reis"}, exp:"A estátua equestre é de D. José I, o rei do tempo do terramoto."}
+   ]}
+  ],
+  recap:["Portugal tinha territórios em 4 continentes; o Brasil era a colónia mais importante.","Nos engenhos fazia-se açúcar com o trabalho de pessoas escravizadas vindas de África.","Os bandeirantes descobriram ouro e diamantes no interior do Brasil.","D. João V (1706–1750) teve uma corte rica e mandou construir Mafra e o Aqueduto.","Barroco = muita decoração, curvas e talha dourada.","A Inquisição (clero) julgava sobretudo cristãos-novos nos autos de fé.","Em 1755 Lisboa foi destruída; Pombal reconstruiu-a com ruas largas e prédios antissísmicos."],
+  mini:[
+   {id:"mc1", type:"choice", q:"No século XVII, qual era a principal produção do Brasil?", opts:["Ouro","Açúcar","Café","Algodão"], ans:1, exp:"No século XVII era o açúcar; no século XVIII ganhou importância o ouro."},
+   {id:"mc2", type:"choice", q:"O que era um engenho?", opts:["Propriedade de produção de açúcar","Propriedade de produção de café","Território do interior do Brasil","Local onde viviam os escravos"], ans:0, exp:"O engenho era a grande propriedade do açúcar."},
+   {id:"mc3", type:"choice", q:"Quais eram os grupos privilegiados?", opts:["Clero e nobreza","Nobreza e burguesia","Clero e burguesia","Burguesia e povo"], ans:0, mis:{1:"m_burguesia"}, exp:"Clero e nobreza não pagavam impostos."},
+   {id:"mc4", type:"choice", q:"Em que ano foi o terramoto de Lisboa?", opts:["1706","1750","1755","1777"], ans:2, exp:"1 de novembro de 1755."},
+   {id:"mc5", type:"choice", q:"Qual destas obras foi mandada construir por D. João V?", opts:["Mosteiro da Batalha","Palácio-Convento de Mafra","Torre de Belém","Mosteiro dos Jerónimos"], ans:1, mis:{0:"m_obras"}, exp:"Mafra (início em 1717). As outras são dos séculos XIV a XVI."}
+  ]},
+ {id:"B", nome:"Planalto", sub:"Nível B · relacionar e explicar", cor:"var(--lv-b)", alt:"200–700 m",
+  intro:"Subiste ao planalto. Agora vais relacionar ideias: classificar territórios, ligar conceitos e explicar com as tuas palavras.",
+  etapas:[
+  {id:"B1", t:"Territórios, açúcar e ouro",
+   conceito:"<p>O império tinha territórios espalhados pelos continentes. No <b>Brasil</b>, o <b>engenho</b> juntava o canavial, a moenda e a casa das caldeiras, a <b>casa grande</b> do senhor e a <b>sanzala</b> das pessoas escravizadas.</p><p>Os <b>bandeirantes</b> encontraram <b>ouro</b> e <b>diamantes</b>. D. João V mandou fundir o ouro em <b>barras</b> marcadas com o escudo real, o ano e o peso, e cobrava o <b>quinto</b>: 1/5 de todo o ouro era para o rei. Assim evitava o <b>contrabando</b>.</p>",
+   termos:[["Quinto","imposto: a quinta parte (20%) do ouro pertencia ao rei."],["Contrabando","comércio escondido, para fugir aos impostos."],["Sanzala (senzala)","alojamento das pessoas escravizadas."],["Moenda","máquina que esmagava a cana para tirar o caldo."]],
+   exemplo:"Se um mineiro tirasse 50 kg de ouro, 10 kg eram do rei. As barras com o selo real provavam que o imposto tinha sido pago.",
+   equivocos:["O quinto não é «5 por cento»: é a quinta parte, ou seja, 20%.","Os bandeirantes não eram só exploradores pacíficos: também capturavam indígenas para os escravizar."],
+   ex:[
+    {id:"b1a", type:"sort", q:"Classifica cada território do império pelo continente.", img:"mapa-imperio-seculo-xvii.jpg", cats:["Europa","África","Ásia","América"], items:[{t:"Açores",c:0},{t:"Madeira",c:0},{t:"Cabo Verde",c:1},{t:"Angola",c:1},{t:"Moçambique",c:1},{t:"São Tomé e Príncipe",c:1},{t:"Goa",c:2},{t:"Macau",c:2},{t:"Timor",c:2},{t:"Brasil",c:3}], exp:"Europa: Portugal, Açores, Madeira. África: Cabo Verde, Guiné, São Tomé e Príncipe, Angola, Moçambique. Ásia: Goa, Damão, Diu, Macau, Timor. América: Brasil."},
+    {id:"b1b", type:"choice", q:"A principal colónia do Império Português no século XVIII era:", opts:["Goa","Angola","Ormuz","Brasil"], ans:3, mis:{0:"m_oriente",2:"m_oriente"}, exp:"O Brasil. Ormuz até já tinha sido perdido em 1622."},
+    {id:"b1c", type:"match", q:"Legenda o engenho: liga cada parte à descrição certa. Atenção: há duas descrições a mais.", img:"engenho-pernambuco.jpg", left:["Casa grande","Engenho","Sanzala","Canavial"], right:["Local onde viviam os escravos africanos","Local onde viviam os índios","Local onde viviam os senhores do engenho","Plantação de cana-de-açúcar","Fábrica onde se produzia açúcar","Fábrica onde se fundia ouro"], ans:[2,4,0,3], exp:"1–c, 2–e, 3–a, 4–d. O ouro era fundido nas casas de fundição, não nos engenhos."},
+    {id:"b1d", type:"fill", q:"Completa o texto com as palavras da lista. Há palavras a mais.", text:"Os {0} eram exploradores que partiam do {1} para o {2} do Brasil à procura de novas riquezas. Descobriram grandes quantidades de {3} e de {4}. O rei {5} mandou fundir o ouro em {6} e cunhou nelas o escudo real, o ano e o seu peso. Também criou um imposto, chamado o {7}, para impedir o contrabando e aumentar as suas receitas.", gaps:[["bandeirantes"],["litoral"],["interior"],["ouro"],["diamantes"],["D. João V"],["barras"],["quinto"]], group:{3:"r",4:"r"}, bank:["interior","litoral","bandeirantes","D. Manuel I","D. João V","moedas","ouro","especiarias","diamantes","navegadores","barras","quinto"], exp:"D. Manuel I reinou no século XVI, a época das especiarias."},
+    {id:"b1e", type:"choice", q:"Observa as duas imagens de trabalho no Brasil. A imagem da direita mostra alguém a trabalhar com uma bateia. Que riqueza procurava?", imgs:["moenda.jpg","bateia.jpg"], opts:["Açúcar","Ouro","Tabaco","Especiarias"], ans:1, exp:"A bateia é uma bacia para lavar a areia dos rios e separar as pepitas de ouro. A imagem da esquerda mostra a moenda do açúcar."}
+   ]},
+  {id:"B2", t:"O poder e a arte de D. João V",
+   conceito:"<p>D. João V foi um <b>rei absoluto</b>: tinha todos os poderes e governou sem reunir as <b>Cortes</b>. Mostrava o seu poder com uma corte luxuosa e com obras grandiosas.</p><p>O <b>barroco</b> caracteriza-se por: <b>muitos elementos decorativos</b>, <b>curvas e contracurvas</b>, <b>colunas torsas</b> (em espiral), <b>jogos de luz e sombra</b>, <b>talha dourada</b> e <b>azulejos</b>. Também nobres e Igreja construíram em barroco, por exemplo a Torre dos Clérigos (Porto) e a Casa de Mateus (Vila Real).</p>",
+   termos:[["Rei absoluto","rei que concentra em si todos os poderes."],["Cortes","assembleia com representantes do clero, da nobreza e do povo."],["Coluna torsa","coluna torcida em espiral, típica do barroco."],["Azulejo","placa de cerâmica pintada que revestia paredes."]],
+   exemplo:"Uma igreja barroca é como uma árvore de Natal: o objetivo é deslumbrar, com dourados e luzes por todo o lado.",
+   equivocos:["Uma obra pode ser barroca sem ter sido mandada fazer pelo rei (Torre dos Clérigos, Casa de Mateus).","D. João V reinou no século XVIII, não no XVI."],
+   ex:[
+    {id:"b2a", type:"tf", q:"Classifica cada afirmação como verdadeira (V) ou falsa (F).", items:[{t:"D. João V reinou no século XVI.",v:false,fix:"Reinou no século XVIII (1706–1750).",mis:"m_seculo"},{t:"A corte de D. João V era rica e luxuosa.",v:true},{t:"D. João V foi um rei absoluto.",v:true},{t:"A origem da riqueza de D. João V eram as especiarias do Oriente.",v:false,fix:"A riqueza vinha do ouro e dos diamantes do Brasil.",mis:"m_oriente"}]},
+    {id:"b2b", type:"imgpick", q:"Seleciona as obras construídas por ordem de D. João V.", imgs:[{src:"mafra.jpg",cap:"Fig. 3"},{src:"torre-clerigos.jpg",cap:"Fig. 4"},{src:"aqueduto.jpg",cap:"Fig. 5"},{src:"casa-mateus.jpg",cap:"Fig. 6"},{src:"biblioteca-joanina.jpg",cap:"Fig. 7"}], ans:[0,2,4], mis:{1:"m_obras",3:"m_obras"}, exp:"Fig. 3 Mafra, Fig. 5 Aqueduto das Águas Livres, Fig. 7 Biblioteca Joanina. A Torre dos Clérigos (Nasoni) e a Casa de Mateus são barrocas, mas não foram mandadas fazer pelo rei."},
+    {id:"b2c", type:"choice", q:"Qual é o estilo arquitetónico e artístico das figuras 4 (Torre dos Clérigos) e 6 (Casa de Mateus)?", imgs:["torre-clerigos.jpg","casa-mateus.jpg"], opts:["Gótico","Manuelino","Barroco","Pombalino"], ans:2, mis:{3:"m_barroco"}, exp:"São obras barrocas do Norte de Portugal, ligadas ao arquiteto Nicolau Nasoni."},
+    {id:"b2d", type:"open", q:"Indica <b>duas características</b> do estilo barroco.", img:"igreja-sao-francisco-porto.jpg", groups:[{n:"muita decoração",k:["decora","ornament","exuberan","excesso","exager","horror ao vazio","rebusc"]},{n:"talha dourada",k:["talha","dourad","ouro"]},{n:"curvas e contracurvas",k:["curva","movimento","ondula"]},{n:"colunas torsas",k:["torsa","torcid","espiral","salomon"]},{n:"luz e sombra",k:["luz","sombra"]},{n:"azulejos e mármores",k:["azulej","marmor"]}], min:2, model:"Uso de muitos elementos decorativos; decoração com talha dourada; curvas e contracurvas; colunas torsas; jogos de luz e sombra."}
+   ]},
+  {id:"B3", t:"Clero, nobreza e povo",
+   conceito:"<p>A sociedade estava organizada em três <b>ordens</b>: o <b>clero</b> (oração, ensino, assistência aos pobres e doentes), a <b>nobreza</b> (guerra, defesa do império, governação) e o <b>povo</b> (trabalho e impostos).</p><p>Dentro do povo, a <b>burguesia</b> enriquecia com o comércio e procurava <b>imitar a nobreza</b>. Um burguês só podia tornar-se nobre <b>por determinação do rei</b>, que lhe dava um título.</p>",
+   termos:[["Ordem (estado)","cada um dos três grandes grupos da sociedade."],["Burguesia","grupo do povo que enriquecia com o comércio."],["Título nobiliárquico","distinção dada pelo rei (barão, visconde, conde…)."],["Tribunal do Santo Ofício","outro nome da Inquisição."]],
+   exemplo:"Um comerciante rico de Lisboa podia comprar um palácio, vestir-se como um conde e ir à ópera, mas continuava a pagar impostos até o rei o fazer nobre.",
+   equivocos:["A burguesia não era uma quarta ordem privilegiada: fazia parte do povo.","Não era só o nascimento que contava: o rei podia nobilitar quem lhe prestasse serviços."],
+   ex:[
+    {id:"b3a", type:"match", q:"Relaciona cada grupo social com a descrição certa. Há duas descrições a mais.", img:"corte-d-joao-v.jpg", left:["Clero","Nobreza","Burguesia","Povo"], right:["Dedicava-se à assistência e à oração","Trabalhava no comércio, na guerra e na oração","Dedicava-se à defesa do império","Vivia com muitas dificuldades","Procurava imitar a nobreza","Grupo privilegiado que se dedicava à agricultura"], ans:[0,2,4,3], exp:"1–a, 2–c, 3–e, 4–d."},
+    {id:"b3b", type:"choice", q:"No século XVIII, os membros da burguesia podiam ascender à nobreza…", opts:["com a riqueza do comércio ultramarino","por determinação régia","por nascimento","com uma formação universitária"], ans:1, mis:{0:"m_nascimento",2:"m_nascimento"}, exp:"Só o rei podia dar títulos de nobreza. A riqueza ajudava, mas não bastava."},
+    {id:"b3c", type:"choice", q:"A cerimónia representada é um…", img:"auto-de-fe.jpg", opts:["auto de fé","julgamento judaico","julgamento cristão","castigo público"], ans:0, exp:"Auto de fé: leitura pública das sentenças da Inquisição."},
+    {id:"b3d", type:"choice", q:"As principais vítimas dessa cerimónia eram:", opts:["muçulmanos","judeus","cristãos-novos","cristãos-velhos"], ans:2, mis:{0:"m_vitimas",1:"m_vitimas"}, exp:"Os judeus tinham sido obrigados a converter-se em 1497; os seus descendentes, os cristãos-novos, eram vigiados pela Inquisição."},
+    {id:"b3e", type:"imgpick", q:"Estas figuras representam os grupos sociais. Seleciona as que pertencem a grupos <b>privilegiados</b>.", imgs:[{src:"nobreza.jpg",cap:"A"},{src:"clero.jpg",cap:"B"},{src:"burguesia.jpg",cap:"C"},{src:"povo.jpg",cap:"D"}], ans:[0,1], mis:{2:"m_burguesia"}, exp:"A: nobre; B: membro do clero. C (burguês) e D (povo) pagavam impostos."}
+   ]},
+  {id:"B4", t:"Reconstruir Lisboa",
+   conceito:"<p>Depois do terramoto, o ministro tomou <b>medidas imediatas</b>: enterrar os mortos (para evitar epidemias), cuidar dos feridos, <b>policiar as ruas</b> para evitar roubos e planear a reconstrução.</p><p>Governou com poderes enormes e fez <b>reformas</b> em três áreas: <b>economia</b> (companhias comerciais, indústrias), <b>sociedade</b> (limitar o poder do clero e da nobreza, apoiar a burguesia) e <b>ensino</b> (escolas menores, Aula do Comércio, reforma da Universidade de Coimbra).</p>",
+   termos:[["Companhia comercial","empresa com o exclusivo de um comércio (ex.: vinho do Douro)."],["Escolas menores","escolas onde se aprendia a ler, escrever e contar."],["Aula do Comércio","escola para formar comerciantes."],["Reforma","mudança organizada para melhorar alguma coisa."]],
+   exemplo:"A Companhia das Vinhas do Alto Douro (1756) criou a primeira região demarcada de vinho: ainda hoje o vinho do Porto só pode vir dessa região.",
+   equivocos:["As reformas não foram só na cidade: mexeram na economia, na sociedade e no ensino de todo o país.","Rei: D. José I. Ministro: Sebastião José de Carvalho e Melo (Marquês de Pombal)."],
+   ex:[
+    {id:"b4a", type:"grid", q:"Completa o quadro: em cada linha escolhe a resposta certa (na linha das calamidades escolhe três).", img:"lisboa-final-seculo-xviii.jpg", rows:["Ano da destruição de Lisboa","Calamidades que destruíram Lisboa","Rei que governava Portugal","Ministro responsável pela reconstrução"], cols:[["1706","1750","1755","1759"],["Terramoto","Maremoto","Incêndios","Peste","Guerra"],["D. João V","D. José I","D. Maria I","D. Pedro II"],["Marquês de Pombal","Padre António Vieira","Nicolau Nasoni","Duque de Aveiro"]], ans:[[2],[0,1,2],[1],[0]], exp:"1755; terramoto, maremoto e incêndios; D. José I; Sebastião José de Carvalho e Melo, Marquês de Pombal."},
+    {id:"b4b", type:"open", q:"Indica <b>duas medidas</b> tomadas logo após a destruição de Lisboa.", groups:[{n:"enterrar os mortos",k:["enterr","sepult","mortos","cadaver"]},{n:"cuidar dos vivos/feridos",k:["cuidar","ferid","vivos","tratar","alimenta","abrig"]},{n:"policiar as ruas / evitar roubos",k:["polic","roub","saque","pilha","ordem","vigi"]},{n:"planear a reconstrução",k:["reconstru","planta","plano","limpar","entulho"]}], min:2, model:"Enterrar os mortos e cuidar dos vivos; policiar as ruas para evitar roubos; planear a reconstrução."},
+    {id:"b4c", type:"open", q:"A partir da imagem, refere <b>duas características</b> da Lisboa pombalina.", img:"lisboa-pombalina.jpg", groups:[{n:"ruas largas e retas/perpendiculares",k:["larga","reta","retilin","paralel","perpendic","geometr","xadrez","grelha","cruz"]},{n:"prédios da mesma altura / fachadas iguais",k:["mesma altura","altura","iguais","identic","semelhan","fachada","nivelad"]},{n:"Praça do Comércio junto ao rio",k:["praca","comercio","rio","tejo"]},{n:"edifícios antissísmicos (gaiola)",k:["antissism","anti-sism","antisism","gaiola","sismo","resist"]},{n:"esgotos e passeios",k:["esgoto","passeio","calcad","iluminac"]}], min:2, model:"Ruas largas e perpendiculares; edifícios com fachadas idênticas e a mesma altura; sistema antissísmico de gaiola; Praça do Comércio junto ao rio; rede de esgotos."},
+    {id:"b4d", type:"sort", q:"Completa o esquema das medidas do Marquês de Pombal: classifica cada medida.", cats:["Económicas","Sociais","Educativas"], items:[{t:"Criação de companhias comerciais",c:0},{t:"Criação de novas indústrias",c:0},{t:"Demarcação da região do vinho do Porto",c:0},{t:"Limitação do poder do clero e da nobreza",c:1},{t:"Apoio à burguesia",c:1},{t:"Fim da distinção entre cristãos-novos e cristãos-velhos",c:1},{t:"Criação das escolas menores",c:2},{t:"Reforma da Universidade de Coimbra",c:2},{t:"Criação da Aula do Comércio",c:2}], exp:"Económicas: companhias, indústrias, Douro. Sociais: limitar clero e nobreza, apoiar a burguesia, fim da distinção entre cristãos. Educativas: escolas menores, Aula do Comércio, Colégio dos Nobres, Universidade."}
+   ]}
+  ],
+  recap:["Territórios por continente: Europa, África, Ásia e América (Brasil).","Engenho: casa grande, sanzala, canavial e a fábrica do açúcar.","O quinto: 1/5 do ouro era do rei; o ouro era fundido em barras marcadas.","Rei absoluto: governa sem Cortes e tem todos os poderes.","Barroco: decoração abundante, curvas, colunas torsas, talha dourada, azulejos.","Burguesia: rica, parte do povo, imitava a nobreza; só o rei a podia nobilitar.","Pombal: medidas imediatas após 1755 e reformas económicas, sociais e educativas."],
+  mini:[
+   {id:"mb1", type:"choice", q:"O que era o «quinto»?", opts:["Um imposto: 1/5 do ouro era do rei","O quinto rei da dinastia","Um tipo de moeda","Uma região do Brasil"], ans:0, mis:{}, exp:"O rei ficava com a quinta parte do ouro extraído."},
+   {id:"mb2", type:"choice", q:"Porque é que o ouro era fundido em barras com o escudo real?", opts:["Para ficar mais bonito","Para evitar o contrabando e garantir o imposto","Para ser mais leve","Para enviar para a Índia"], ans:1, exp:"As barras marcadas mostravam que o quinto tinha sido pago."},
+   {id:"mb3", type:"tf", q:"Verdadeiro ou falso?", items:[{t:"A burguesia era um grupo privilegiado.",v:false,fix:"Fazia parte do povo e pagava impostos.",mis:"m_burguesia"},{t:"O clero dedicava-se ao culto, ao ensino e à assistência.",v:true}]},
+   {id:"mb4", type:"choice", q:"Qual destas é uma medida <b>económica</b> do Marquês de Pombal?", opts:["Reforma da Universidade de Coimbra","Criação da Companhia das Vinhas do Alto Douro","Criação das escolas menores","Expulsão dos jesuítas"], ans:1, exp:"A Companhia do Douro organizou o comércio do vinho do Porto."},
+   {id:"mb5", type:"choice", q:"Qual destas obras é barroca mas <b>não</b> foi mandada construir por D. João V?", opts:["Palácio-Convento de Mafra","Aqueduto das Águas Livres","Torre dos Clérigos","Biblioteca Joanina"], ans:2, mis:{}, exp:"A Torre dos Clérigos, no Porto, é obra de Nicolau Nasoni para a Irmandade dos Clérigos."}
+  ]},
+ {id:"A", nome:"Montanha", sub:"Nível A · analisar e argumentar", cor:"var(--lv-a)", alt:"mais de 700 m",
+  intro:"Chegaste à montanha. Aqui escreves respostas completas, interpretas mapas, gráficos e textos e defines conceitos com rigor.",
+  etapas:[
+  {id:"A1", t:"Ler o império em mapas e fontes",
+   conceito:"<p>No século XVII, durante o <b>domínio filipino</b> (1580–1640), os inimigos de Espanha (<b>Holanda, Inglaterra e França</b>) atacaram os territórios portugueses. O Oriente ficou em <b>crise</b>: concorrência europeia, <b>ataques de piratas</b> e <b>naufrágios</b>. Por isso os portugueses viraram-se para o comércio no <b>oceano Atlântico</b> e para o <b>Brasil</b>.</p><p>A exploração do Brasil provocou grandes <b>movimentos de população</b>: colonos e missionários portugueses partiram para lá e milhões de africanos foram levados à força. É por isso que o Brasil de hoje tem uma população tão diversa.</p>",
+   termos:[["Domínio filipino","período (1580–1640) em que os reis de Espanha governaram Portugal."],["Migração","deslocação de pessoas de uma região para outra."],["Migração forçada","deslocação contra a vontade, como o tráfico de pessoas escravizadas."],["Legenda","explicação das cores e símbolos de um mapa."]],
+   exemplo:"Numa fotografia da seleção brasileira de futebol vês jogadores com tons de pele diferentes: é o resultado de séculos de encontro entre europeus, africanos e indígenas.",
+   equivocos:["Num mapa, cada cor da legenda conta uma história diferente: lê sempre a legenda antes de responder.","Os portugueses não abandonaram o Oriente: continuaram em Goa, Macau e Timor, mas com menos lucros."],
+   ex:[
+    {id:"a1a", type:"fill", typed:true, q:"Escreve as palavras que faltam (podes escrever sem acentos).", text:"No século XVII, o Império Português distribuía-se por vários continentes: {0}, {1}, {2} e {3}. Porém, o Império Português do Oriente enfrentou uma grave {4}, devido à concorrência de outros países europeus, tais como a {5}, a {6} e a {7}. Os portugueses também tinham grandes prejuízos devido a ataques {8}, assim como aos {9} provocados por tempestades. Por essa razão, transferiram as suas atenções para o comércio no oceano {10} e o {11} tornou-se a principal colónia do império.", gaps:[["europa","africa","asia","america"],["europa","africa","asia","america"],["europa","africa","asia","america"],["europa","africa","asia","america"],["crise"],["inglaterra","franca","holanda"],["inglaterra","franca","holanda"],["inglaterra","franca","holanda"],["piratas","de piratas","corsarios"],["naufragios"],["atlantico"],["brasil"]], group:{0:"c",1:"c",2:"c",3:"c",5:"p",6:"p",7:"p"}, exp:"Europa, África, Ásia, América; crise; Inglaterra, França, Holanda; piratas; naufrágios; Atlântico; Brasil."},
+    {id:"a1b", type:"hotseq", q:"Legenda o engenho. Para cada palavra, clica no número certo da imagem.", img:"engenho-numerado.jpg", spots:[{n:"1",x:46,y:67},{n:"2",x:42,y:40},{n:"3",x:16,y:27},{n:"4",x:84,y:27}], seq:[{p:"Canavial",s:0},{p:"Casa grande (casa do senhor)",s:1},{p:"Sanzala",s:2},{p:"Engenho (fábrica do açúcar)",s:3}], exp:"1 – canavial; 2 – casa grande; 3 – sanzala; 4 – engenho."},
+    {id:"a1c", type:"choice", q:"Observa o mapa. Que cor da legenda mostra que o Brasil foi fonte de grande riqueza no século XVIII (principais áreas mineiras)?", img:"mapa-brasil-seculo-xviii.jpg", opts:["Azul","Vermelho","Verde","Roxo"], ans:0, exp:"O azul marca as principais áreas mineiras. Vermelho e verde: captura de índios e procura de ouro pelos bandeirantes. Roxo: expedições contra índios que se revoltaram."},
+    {id:"a1d", type:"choice", q:"No mesmo mapa, que cores mostram os bandeirantes à procura de índios para escravizar e de minas de ouro no sertão?", img:"mapa-brasil-seculo-xviii.jpg", opts:["Azul e roxo","Vermelho e verde","Só roxo","Laranja"], ans:1, exp:"Vermelho (captura de índios) e verde (procura de ouro)."},
+    {id:"a1e", type:"open", q:"Observa a fotografia da seleção brasileira (2024) e o mapa da emigração e do tráfico. <b>Explica</b> de que modo as deslocações de população do século XVIII estão refletidas na fotografia.", imgs:["mapa-emigracao-trafico.jpg","selecao-brasileira.jpg"], groups:[{n:"descendentes de portugueses/europeus",k:["portugu","europe","colono","branc"]},{n:"descendentes de africanos escravizados",k:["africa","escrav","negr"]},{n:"mistura / mestiçagem / descendência",k:["mestic","mistur","descend","filhos","tons de pele","casament","cruzament","diferentes"]}], min:3, model:"A fotografia mostra jogadores brancos, negros e com diferentes tons de pele. Os brancos poderão descender dos portugueses que emigraram para o Brasil; os negros, das pessoas escravizadas levadas de África; os de outros tons de pele resultam da mistura entre descendentes de europeus, africanos e indígenas."}
+   ]},
+  {id:"A2", t:"Definir o poder absoluto",
+   conceito:"<p>Na <b>monarquia absoluta</b> o rei reúne os <b>três poderes</b>: <b>legislativo</b> (fazer as leis), <b>executivo</b> (governar e mandar cumprir as leis) e <b>judicial</b> (julgar quem não as cumpre). O poder é <b>hereditário</b> (passa de pais para filhos) e <b>vitalício</b> (dura toda a vida).</p><p>Acreditava-se que o poder do rei tinha <b>origem divina</b>: «Deus no céu, o rei na terra». Os reis anteriores ainda reuniam as Cortes (D. João IV, 7 vezes); <b>D. João V nunca as reuniu</b>. O aumento dos impostos e o ouro do Brasil deram-lhe meios para controlar a nobreza com pensões e dádivas.</p>",
+   termos:[["Poder legislativo","fazer as leis."],["Poder executivo","governar e fazer cumprir as leis."],["Poder judicial","julgar quem não cumpre as leis."],["Origem divina","ideia de que o poder do rei vem de Deus."],["Magnânimo","generoso, que gasta com grandeza (cognome de D. João V)."]],
+   exemplo:"Imagina um jogo em que a mesma pessoa inventa as regras, joga e ainda é o árbitro. Ninguém lhe pode dizer que não: assim era o rei absoluto.",
+   equivocos:["«Absoluto» não quer dizer que o rei fosse mau; quer dizer que o seu poder não tinha limites legais.","As Cortes não eram um tribunal: eram uma assembleia que aconselhava o rei."],
+   ex:[
+    {id:"a2a", type:"open", q:"<b>Define</b> monarquia absoluta.", img:"poderes-do-rei.jpg", groups:[{n:"o rei concentra todos os poderes",k:["todos os poderes","todo o poder","concentra","tres poderes","legislativ","executiv","judici"]},{n:"governa sem convocar as Cortes",k:["cortes","sem convocar","sem reunir","sozinho","sem ouvir","autorit"]},{n:"é hereditário e vitalício / origem divina",k:["heredit","vitalic","toda a vida","divin","deus"]}], min:2, model:"Regime político hereditário e vitalício em que o rei governa de forma autoritária, sem convocar Cortes, reunindo em si todos os poderes (legislativo, executivo e judicial)."},
+    {id:"a2b", type:"tf", q:"Classifica e lê a correção das falsas.", items:[{t:"D. João V foi um rei absoluto.",v:true},{t:"A corte de D. João V era rica mas não luxuosa.",v:false,fix:"Era rica e luxuosa."},{t:"A corte de D. João V era animada com bailes e banquetes.",v:true},{t:"A origem da riqueza de D. João V era o ouro brasileiro.",v:true},{t:"D. João V mandou construir o Real Convento de Mafra.",v:true},{t:"D. João V construiu o Aqueduto das Águas Livres em Coimbra.",v:false,fix:"O Aqueduto das Águas Livres fica em Lisboa. Em Coimbra mandou fazer a Biblioteca Joanina."}]},
+    {id:"a2c", type:"choice", q:"Lê: «O aumento dos impostos e o ouro do Brasil deram a D. João V os meios de controlar a nobreza, através de pensões e dádivas, <u>reforçando a sua autoridade acima de todos</u>.» (A. H. de Oliveira Marques). A frase sublinhada significa que D. João V foi um rei…", img:"reunioes-de-cortes.jpg", opts:["magnânimo","religioso","absoluto","com coroa"], ans:2, mis:{0:"m_cortes"}, exp:"Autoridade acima de todos = poder absoluto. «Magnânimo» é o cognome, não o tipo de poder."},
+    {id:"a2d", type:"choice", q:"Observa o interior da igreja de São Francisco (Porto). Assinala a alínea <b>incorreta</b>.", img:"igreja-sao-francisco-porto.jpg", opts:["Na decoração do monumento foram usados azulejos e talha dourada.","O interior do monumento é barroco.","Foi graças ao ouro do Brasil que se fizeram decorações como esta.","O rei D. João V usou o ouro do Brasil sobretudo para desenvolver as atividades económicas."], ans:3, exp:"D. João V gastou o ouro em luxo, festas e construções; não desenvolveu a agricultura nem a indústria. Por isso o país empobreceu quando o ouro diminuiu."},
+    {id:"a2e", type:"order", q:"Ordena os reis pelo número de vezes que reuniram Cortes, do <b>maior</b> para o <b>menor</b> (observa o quadro).", img:"reunioes-de-cortes.jpg", items:["D. João IV (7)","D. Afonso VI (3)","D. Pedro II (1)","D. João V (nenhuma)"], exp:"As Cortes foram reunidas cada vez menos, até deixarem de o ser: sinal do reforço do poder absoluto."}
+   ]},
+  {id:"A3", t:"A Inquisição e a sociedade",
+   conceito:"<p>O <b>Tribunal do Santo Ofício</b> (Inquisição) chegou a Portugal em 1536. Era dirigido pelo <b>clero</b> e julgava quem fosse acusado de não respeitar a fé católica. Os acusados não sabiam quem os denunciara e podiam ser torturados.</p><p>As sentenças eram lidas no <b>auto de fé</b>, uma cerimónia pública com sermão, procissão e leitura das penas: prisão, perda de bens e, nos casos mais graves, morte na fogueira. As principais vítimas eram os <b>cristãos-novos</b>.</p>",
+   termos:[["Heresia","crença contrária à doutrina da Igreja."],["Sentença","decisão de um tribunal."],["Cristão-velho","católico sem antepassados judeus ou muçulmanos."],["Intolerância religiosa","não aceitar outras crenças."]],
+   exemplo:"Hoje, em Portugal, a Constituição garante a liberdade religiosa: ninguém pode ser perseguido pela sua religião. No século XVIII era muito diferente.",
+   equivocos:["Os judeus «declarados» já não podiam viver em Portugal desde 1496–1497; por isso os perseguidos eram cristãos-novos.","A Inquisição não acabou com Pombal: ele reformou-a e pô-la sob o controlo do Estado. Só foi extinta em 1821."],
+   ex:[
+    {id:"a3a", type:"short", q:"Responde por escrito.", img:"auto-de-fe.jpg", items:[{q:"Indica o nome da cerimónia representada na figura.",acc:["auto de fe","auto-de-fe","autos de fe","auto da fe"],model:"Auto de fé"},{q:"Nomeia o tribunal que julgava as vítimas desta cerimónia.",acc:["inquisic","santo oficio"],model:"Tribunal da Inquisição (Santo Ofício)"},{q:"Refere as principais vítimas condenadas nestas cerimónias em Portugal.",acc:["cristaos-novos","cristaos novos","cristao-novo","cristao novo"],model:"Cristãos-novos"}]},
+    {id:"a3b", type:"tf", q:"Assinala V ou F. Nas falsas, lê a correção.", items:[{t:"A sociedade era formada por três ordens: clero, nobreza e povo.",v:true},{t:"O clero e a nobreza eram os grupos privilegiados.",v:true},{t:"A nobreza possuía muitas igrejas e conventos.",v:false,fix:"Era o clero que possuía muitas igrejas e conventos."},{t:"A rica burguesia vivia sobretudo do comércio.",v:true},{t:"O povo ganhava baixos salários e não pagava impostos.",v:false,fix:"O povo ganhava baixos salários e pagava elevados impostos."},{t:"O Tribunal da Inquisição era presidido pela nobreza.",v:false,fix:"Era presidido pelo clero.",mis:"m_inquisicao"}]},
+    {id:"a3c", type:"fill", q:"Completa com as palavras da lista.", text:"a) {0}, grupo social {1}: era responsável pelo serviço religioso, pelo Tribunal da Inquisição, pelo ensino e pela assistência. b) {2}, grupo social {3}: dedicava-se à guerra e colaborava com o rei na governação. c) {4}, grupo social {5}: vivia com muitas dificuldades e pagava muitos impostos; a burguesia fazia parte deste grupo.", gaps:[["Clero"],["privilegiado"],["Nobreza"],["privilegiado"],["Povo"],["não privilegiado"]], bank:["Clero","Nobreza","Povo","privilegiado","não privilegiado"], exp:"Clero e nobreza: privilegiados. Povo (incluindo a burguesia): não privilegiado."}
+   ]},
+  {id:"A4", t:"Pombal: medidas, datas e números",
+   conceito:"<p>Pombal quis tornar Portugal menos dependente da <b>Inglaterra</b>, a quem comprava muito mais do que vendia. Criou <b>companhias comerciais</b> e <b>indústrias</b> para produzir no país o que antes se <b>importava</b>.</p><p>Na sociedade, <b>perseguiu a nobreza e o clero</b> que se lhe opunham: em 1759 a família <b>Távora</b> foi executada após o atentado contra D. José I e os <b>jesuítas</b> foram expulsos. Valorizou a <b>burguesia</b> (o comércio passou a ser «profissão nobre», 1770). No ensino, criou escolas por todo o país (1772) e reformou a <b>Universidade de Coimbra</b>, com laboratórios e experiências.</p>",
+   termos:[["Importação","comprar produtos ao estrangeiro."],["Exportação","vender produtos ao estrangeiro."],["Jesuítas","ordem religiosa que dirigia muitas escolas."],["Cronologia","lista de acontecimentos ordenados no tempo."]],
+   exemplo:"É como a mesada: se gastas mais do que recebes, ficas a dever. Pombal quis que Portugal comprasse menos lá fora e vendesse mais.",
+   equivocos:["A escravatura foi proibida no reino (1761), mas continuou no Brasil e nas outras colónias até ao século XIX.","As reformas no ensino afetaram a Universidade de Coimbra (não havia Universidade do Porto)."],
+   ex:[
+    {id:"a4a", type:"grid", q:"Lê a cronologia e escolhe os anos de acontecimentos que mostram que Pombal…<br><small>1756 – Companhia das Vinhas do Alto Douro · 1759 – Companhia de Pernambuco e Paraíba; expulsão dos jesuítas; execução dos Távoras · 1770 – o comércio é declarado «profissão nobre e necessária» · 1772 – escolas por todo o país</small>", rows:["promoveu as atividades económicas","perseguiu o clero e a nobreza","prestigiou os burgueses ligados ao comércio","promoveu o ensino"], cols:[["1756","1759","1770","1772"],["1756","1759","1770","1772"],["1756","1759","1770","1772"],["1756","1759","1770","1772"]], ans:[[0,1,2],[1],[2],[3]], exp:"a) 1756, 1759, 1770; b) 1759; c) 1770; d) 1772. O ano de 1759 aparece duas vezes porque nesse ano aconteceram coisas diferentes."},
+    {id:"a4b", type:"order", q:"Ordena cronologicamente, do mais antigo para o mais recente.", items:["Descoberta de ouro no Brasil (fins do séc. XVII)","Início do reinado de D. João V (1706)","Início da construção do Palácio de Mafra (1717)","Construção do Aqueduto das Águas Livres (a partir de 1731)","Morte de D. João V e início do reinado de D. José I (1750)","Terramoto de Lisboa (1755)","Reconstrução da Lisboa pombalina"], hideDates:true, exp:"O ouro foi descoberto ainda no reinado de D. Pedro II; D. João V aproveitou-o."},
+    {id:"a4c", type:"tf", q:"Classifica como verdadeiras ou falsas.", img:"execucao-tavoras.jpg", items:[{t:"Em 1759, o rei D. José I sofreu um atentado atribuído à família Évora.",v:false,fix:"A família acusada foi a dos Távora (com o duque de Aveiro). O atentado foi em 1758 e a execução em 1759."},{t:"Após o atentado, os jesuítas, responsáveis por muitas escolas, foram expulsos do reino.",v:true},{t:"O ensino passou a ser mais prático e experimental, com a reforma da Universidade do Porto.",v:false,fix:"Foi reformada a Universidade de Coimbra (1772)."},{t:"Pombal incentivou a criação de novas indústrias.",v:true},{t:"Pombal acabou com a escravatura em todo o império.",v:false,fix:"Em 1761 proibiu a entrada de pessoas escravizadas no reino; nas colónias a escravatura continuou.",mis:"m_escravatura"}]},
+    {id:"a4d", type:"open", q:"Observa o gráfico do comércio entre Portugal e a Inglaterra. Escreve um pequeno texto onde refiras: <b>o que está representado e o século</b>; <b>o significado das duas cores</b>; <b>como evoluíram as exportações e as importações</b>; <b>se as medidas de Pombal foram benéficas</b>.", img:"grafico-comercio-inglaterra.jpg", groups:[{n:"comércio Portugal–Inglaterra no século XVIII",k:["inglaterra","ingles","seculo xviii","sec. xviii","seculo 18","1706","1796"]},{n:"vermelho = exportações",k:["vermelh"]},{n:"azul = importações",k:["azul"]},{n:"as importações diminuíram (2.ª metade)",k:["importac"]},{n:"as exportações aumentaram",k:["exportac"]},{n:"medidas benéficas",k:["benefic","positiv","boas","resultad","melhor"]}], min:5, model:"O gráfico representa o comércio entre Portugal e a Inglaterra no século XVIII. O vermelho são as exportações (o que Portugal vendia aos ingleses) e o azul as importações (o que comprava). Até 1756 as importações subiram quase sempre. Depois de 1756 as importações desceram e as exportações subiram. Em 1796 os valores eram parecidos, o que mostra que as medidas de Pombal foram benéficas."}
+   ]}
+  ],
+  recap:["A crise do Oriente (holandeses, ingleses, franceses, piratas e naufrágios) levou Portugal a virar-se para o Atlântico e o Brasil.","As migrações livres (colonos, missionários) e forçadas (tráfico) explicam a diversidade do Brasil.","Monarquia absoluta: poder legislativo, executivo e judicial no rei; sem Cortes; origem divina.","A Inquisição, dirigida pelo clero, perseguia sobretudo cristãos-novos.","Pombal: companhias e indústrias para reduzir importações, perseguição da nobreza e dos jesuítas, valorização da burguesia, reforma do ensino.","Ler gráficos: identificar o tema, a época, a legenda e a evolução antes de tirar conclusões."],
+  mini:[
+   {id:"ma1", type:"choice", q:"Porque é que os portugueses viraram as atenções para o Brasil no século XVII?", opts:["Porque descobriram especiarias no Brasil","Por causa da crise no Oriente (concorrência europeia, piratas e naufrágios)","Porque a Espanha lhes ofereceu o Brasil","Porque os jesuítas o pediram"], ans:1, mis:{0:"m_oriente"}, exp:"A crise do Oriente levou-os a apostar no Atlântico."},
+   {id:"ma2", type:"choice", q:"«Deus no céu, o rei na terra.» Esta expressão significa que…", opts:["o poder do rei tinha origem divina","o rei era também padre","o povo escolhia o rei","o rei vivia numa igreja"], ans:0, exp:"Acreditava-se que o rei recebia o poder de Deus."},
+   {id:"ma3", type:"choice", q:"Um comerciante inglês em 1757 ficou zangado com a nova Companhia do Douro. Porquê?", opts:["Porque perdeu o controlo do comércio do vinho do Porto","Porque a companhia proibiu o vinho","Porque Portugal declarou guerra à Inglaterra","Porque a companhia era dos jesuítas"], ans:0, exp:"Os ingleses dominavam a compra e exportação do vinho do Porto."},
+   {id:"ma4", type:"choice", q:"Se Portugal importava 1,1 milhões de libras e exportava 0,4 milhões, então…", opts:["comprava mais do que vendia","vendia mais do que comprava","comprava e vendia o mesmo","não comerciava com a Inglaterra"], ans:0, mis:{1:"m_balanca"}, exp:"Importar = comprar. Com importações maiores, Portugal gastava mais do que ganhava."},
+   {id:"ma5", type:"choice", q:"Qual destas medidas pertence ao <b>ensino</b>?", opts:["Reforma da Universidade de Coimbra","Demarcação da região do Douro","Apoio à burguesia","Criação de indústrias"], ans:0, exp:"A Universidade passou a ter laboratórios, jardim botânico e observatório."}
+  ]}
+];
+
+/* ===================== LABORATÓRIO ===================== */
+var LABS = [
+ {id:"L1", t:"Porque é que o Brasil ficou tão importante?", c:"imperio", steps:[
+  {txt:"Pensa numa loja que vendia um produto muito caro (as especiarias do Oriente). De repente aparecem três lojas concorrentes ao lado (Holanda, Inglaterra, França) e ladrões no caminho (piratas). A loja perde clientes e dinheiro.", an:"Analogia: uma loja que perde clientes para a concorrência.", q:{q:"Na analogia, quem são as lojas concorrentes?", opts:["Holanda, Inglaterra e França","Brasil e Angola","Os piratas","Os jesuítas"], ans:0}, alt:{txt:"Vê de outra forma: no século XVII, outros países europeus quiseram também comerciar no Oriente e conquistaram territórios portugueses, como Ormuz, Malaca e Ceilão. Esses países eram a Holanda, a Inglaterra e a França.", q:{q:"Que países fizeram concorrência a Portugal no Oriente?", opts:["Holanda, Inglaterra e França","Brasil, Angola e Goa","Espanha e Itália"], ans:0}}},
+  {txt:"O dono da loja muda de negócio: começa a vender açúcar, que produz numa grande quinta noutro sítio, o Brasil. Mais tarde encontra lá ouro. O negócio do Atlântico passa a dar mais lucro do que o do Oriente.", an:"Analogia: mudar para um negócio que dá mais lucro.", q:{q:"Que dois produtos tornaram o Brasil tão importante?", opts:["Açúcar e ouro","Especiarias e seda","Vinho e sal","Porcelana e tapetes"], ans:0}, alt:{txt:"Primeiro, no século XVII, o Brasil deu açúcar, produzido nos engenhos. Depois, no século XVIII, os bandeirantes encontraram ouro e diamantes. Açúcar e ouro foram as grandes riquezas.", q:{q:"No século XVIII, que nova riqueza do Brasil chegou a Lisboa em grandes quantidades?", opts:["Ouro","Pimenta","Seda"], ans:0}}}
+ ]},
+ {id:"L2", t:"Como funcionava um engenho?", c:"engenho", steps:[
+  {txt:"Um engenho era como uma pequena aldeia-fábrica: tinha a plantação (canavial), a fábrica (moenda e caldeiras), a casa do dono (casa grande) e o alojamento dos trabalhadores escravizados (sanzala).", an:"Analogia: uma aldeia que é ao mesmo tempo quinta e fábrica.", q:{q:"Onde dormiam as pessoas escravizadas?", opts:["Na sanzala","Na casa grande","No canavial","Na moenda"], ans:0}, alt:{txt:"Lembra-te assim: a casa GRANDE era do senhor, o dono. A sanzala era um barracão onde as pessoas escravizadas dormiam amontoadas, muitas vezes no chão.", q:{q:"A casa grande era a casa…", opts:["do senhor do engenho","das pessoas escravizadas","dos missionários"], ans:0}}},
+  {txt:"O açúcar seguia passos: cortar a cana → esmagá-la na moenda → cozer o caldo nas caldeiras → purgar (branquear) → encaixotar e enviar para a Europa.", an:"Analogia: uma receita com passos por ordem.", q:{q:"Qual é o passo logo a seguir a cortar a cana?", opts:["Esmagá-la na moenda","Encaixotar","Purgar o açúcar","Enviar para Lisboa"], ans:0}, alt:{txt:"Para tirar o sumo de uma laranja tens de a espremer primeiro. Com a cana é igual: primeiro esmaga-se na moenda para tirar o caldo.", q:{q:"Para que servia a moenda?", opts:["Para esmagar a cana e tirar o caldo","Para fundir ouro","Para guardar escravos"], ans:0}}},
+  {txt:"Os indígenas resistiram, fugiram para o interior e morreram em grande número com doenças trazidas pelos europeus. Os colonos passaram a trazer pessoas escravizadas de África, em navios negreiros, através do Atlântico.", an:"Ideia-chave: o sentido do tráfico era África → Brasil.", q:{q:"Em que sentido viajavam os navios negreiros?", opts:["De África para o Brasil","Do Brasil para África","De Portugal para a Índia"], ans:0, mis:"m_trafico"}, alt:{txt:"Olha para o mapa: as setas do tráfico partem de Angola, da Guiné e de Moçambique e chegam ao Brasil. As pessoas eram arrancadas de África para trabalhar nos engenhos e nas minas do Brasil.", q:{q:"De onde eram arrancadas as pessoas escravizadas?", opts:["De África","Do Brasil","Da Ásia"], ans:0}}}
+ ]},
+ {id:"L3", t:"O quinto e as barras de ouro", c:"ouro", steps:[
+  {txt:"«Quinto» quer dizer a quinta parte. Se divides uma pizza em 5 fatias iguais e dás 1 ao rei, deste-lhe o quinto. Em percentagem, é 20%.", an:"Analogia: uma pizza em 5 fatias.", q:{q:"Um mineiro extraiu 50 kg de ouro. Quantos quilos pertenciam ao rei?", opts:["10 kg","5 kg","25 kg","50 kg"], ans:0, mis:"m_quinto"}, alt:{txt:"Faz a conta por partes: 50 kg divididos por 5 dá 10 kg. Esses 10 kg eram do rei; o mineiro ficava com os outros 40 kg.", q:{q:"E se o mineiro extraísse 100 kg?", opts:["20 kg para o rei","5 kg para o rei","50 kg para o rei"], ans:0}}},
+  {txt:"Muitas pessoas tentavam esconder ouro para não pagar o quinto: é o contrabando. Por isso o rei mandou fundir o ouro em barras com o escudo real, o ano e o peso. Uma barra sem selo era ouro ilegal.", an:"Analogia: o selo de garantia numa embalagem.", q:{q:"Para que servia o selo real nas barras?", opts:["Para provar que o imposto tinha sido pago e evitar o contrabando","Para as tornar mais pesadas","Para as enviar para o Oriente"], ans:0}, alt:{txt:"Pensa num bilhete de concerto com carimbo: o carimbo prova que pagaste. A barra com o escudo real provava que o quinto tinha sido pago ao rei.", q:{q:"Uma barra de ouro SEM o escudo real era provavelmente…", opts:["ouro de contrabando","ouro do rei","ouro falso"], ans:0}}}
+ ]},
+ {id:"L4", t:"Rei absoluto: três poderes numa só pessoa", c:"absolutismo", steps:[
+  {txt:"Num jogo de futebol na escola há quem faça as regras, quem jogue e quem arbitre. Agora imagina que a mesma pessoa faz as três coisas. Ninguém a pode travar. Isto é o poder absoluto.", an:"Analogia: o dono da bola que também é árbitro.", q:{q:"Na analogia, «arbitrar» corresponde a que poder?", opts:["Judicial","Legislativo","Executivo"], ans:0}, alt:{txt:"Fazer as regras = poder legislativo (leis). Pôr as regras em prática = poder executivo (governar). Decidir quem as quebrou e castigar = poder judicial (julgar). O árbitro decide quem quebrou as regras.", q:{q:"Fazer as leis é o poder…", opts:["legislativo","judicial","executivo"], ans:0}}},
+  {txt:"As Cortes eram uma reunião onde representantes do clero, da nobreza e do povo davam conselhos ao rei. Eram uma espécie de travão. D. João V nunca as reuniu: governou sem travão.", an:"Analogia: o conselho de turma que deixa de ser convocado.", q:{q:"Quantas vezes D. João V reuniu as Cortes?", opts:["Nenhuma","Sete","Três","Todos os anos"], ans:0, mis:"m_cortes"}, alt:{txt:"Olha para o quadro: D. João IV reuniu as Cortes 7 vezes, D. Afonso VI 3, D. Pedro II 1 e D. João V 0. O número foi diminuindo até desaparecer.", q:{q:"O que mostra a descida do número de Cortes?", opts:["Que o poder do rei ficou cada vez mais absoluto","Que o povo mandava mais","Que o rei estava doente"], ans:0}}},
+  {txt:"Como pagava o rei para todos lhe obedecerem? Com o ouro do Brasil e os impostos: dava pensões e presentes aos nobres, que assim ficavam dependentes dele.", an:"Ideia-chave: quem paga, manda.", q:{q:"O que deu a D. João V os meios para controlar a nobreza?", opts:["O ouro do Brasil e o aumento dos impostos","As especiarias da Índia","Os votos do povo"], ans:0, mis:"m_oriente"}, alt:{txt:"O documento de Oliveira Marques diz: «O aumento dos impostos e o ouro do Brasil deram a D. João V os meios de controlar a nobreza». Procura sempre a resposta na fonte.", q:{q:"Segundo a fonte, os nobres eram controlados com…", opts:["pensões e dádivas","prisões","guerras"], ans:0}}}
+ ]},
+ {id:"L5", t:"Como reconhecer o barroco", c:"barroco", steps:[
+  {txt:"Imagina que decoras a capa do teu caderno sem deixar nenhum espaço em branco: autocolantes dourados, curvas, brilhos. Os artistas barrocos tinham este «horror ao vazio».", an:"Analogia: um caderno decorado até ao último centímetro.", q:{q:"Qual destas imagens descreve melhor uma igreja barroca?", opts:["Paredes cobertas de talha dourada e azulejos","Paredes brancas e lisas","Estrutura de ferro e vidro"], ans:0, mis:"m_barroco"}, alt:{txt:"Barroco = exagero. Se olhas para dentro e vês ouro, curvas, anjos e colunas em espiral por todo o lado, é barroco. Se é simples e liso, não é.", q:{q:"Uma coluna em espiral chama-se…", opts:["coluna torsa","coluna lisa","coluna de ferro"], ans:0}}},
+  {txt:"Estilo e encomenda são coisas diferentes. A Torre dos Clérigos é barroca, mas foi encomendada por uma irmandade do Porto. Mafra é barroca e foi encomendada por D. João V.", an:"Analogia: duas camisolas do mesmo estilo compradas por pessoas diferentes.", q:{q:"A Torre dos Clérigos é barroca. Foi mandada construir por D. João V?", opts:["Não","Sim"], ans:0, mis:"m_obras"}, alt:{txt:"As obras de D. João V que tens de saber são três: Palácio-Convento de Mafra, Aqueduto das Águas Livres (Lisboa) e Biblioteca Joanina (Coimbra). Tudo o resto, mesmo barroco, foi de outros.", q:{q:"Qual destas é uma obra de D. João V?", opts:["Biblioteca Joanina","Torre dos Clérigos","Mosteiro da Batalha"], ans:0}}}
+ ]},
+ {id:"L6", t:"Ordens, burguesia e Inquisição", c:"sociedade", steps:[
+  {txt:"Pensa num prédio de três andares. Nos de cima (clero e nobreza) vivem os privilegiados, que não pagam condomínio (impostos). No rés-do-chão vive o povo, que paga tudo. A burguesia é um vizinho do rés-do-chão muito rico, com um apartamento luxuoso, mas que continua a pagar.", an:"Analogia: um prédio com andares privilegiados.", q:{q:"Em que «andar» estava a burguesia?", opts:["No do povo (não privilegiado)","No do clero","No da nobreza"], ans:0, mis:"m_burguesia"}, alt:{txt:"A pergunta-chave é: pagava impostos? O clero e a nobreza não; o povo sim. A burguesia pagava impostos, por isso fazia parte do povo, mesmo sendo rica.", q:{q:"A burguesia pagava impostos?", opts:["Sim","Não"], ans:0}}},
+  {txt:"Para «subir de andar», o burguês precisava da autorização do dono do prédio: o rei, que lhe podia dar um título de nobreza como recompensa.", an:"Ideia-chave: só o rei nobilita.", q:{q:"Como podia um burguês tornar-se nobre?", opts:["Por decisão do rei","Comprando um palácio","Estudando muito"], ans:0, mis:"m_nascimento"}, alt:{txt:"Na sociedade de ordens, o nascimento decidia quase tudo. A exceção era o rei: só ele podia elevar alguém à nobreza, dando-lhe um brasão e um título (barão, visconde…).", q:{q:"Quem dava os títulos de nobreza?", opts:["O rei","O papa","As Cortes"], ans:0}}},
+  {txt:"A Inquisição era um tribunal da Igreja. Quem mandava nela era o clero. As principais vítimas eram os cristãos-novos: descendentes de judeus que, em 1497, foram obrigados a tornar-se cristãos.", an:"Ideia-chave: tribunal da Igreja → clero.", q:{q:"Quem dirigia a Inquisição?", opts:["O clero","A nobreza","A burguesia"], ans:0, mis:"m_inquisicao"}, alt:{txt:"O nome completo é Tribunal do Santo Ofício: «santo» indica que pertencia à Igreja. Os juízes (inquisidores) eram padres e bispos.", q:{q:"O Tribunal do Santo Ofício pertencia…", opts:["à Igreja","ao exército","aos comerciantes"], ans:0}}}
+ ]},
+ {id:"L7", t:"Porque é que a Baixa resistiu melhor", c:"terramoto", steps:[
+  {txt:"Uma cesta de vime dobra-se quando a apertas, mas não parte. Os prédios pombalinos têm dentro das paredes uma estrutura de madeira cruzada, a «gaiola», que abana com o sismo em vez de se desfazer.", an:"Analogia: a cesta de vime que dobra mas não parte.", q:{q:"Para que servia a gaiola pombalina?", opts:["Para os edifícios resistirem aos sismos","Para guardar pássaros","Para decorar as fachadas"], ans:0}, alt:{txt:"Antissísmico = contra os sismos. A gaiola de madeira dentro das paredes dava flexibilidade ao prédio: tremia sem cair.", q:{q:"«Antissísmico» quer dizer…", opts:["que resiste aos sismos","que é muito alto","que é feito de ferro"], ans:0}}},
+  {txt:"A Lisboa antiga tinha ruas estreitas e tortas, onde o fogo passava de casa em casa e as pessoas ficavam presas. A nova Baixa tem ruas largas e retas, como um tabuleiro de xadrez, e paredes corta-fogo entre prédios.", an:"Analogia: um tabuleiro de xadrez.", q:{q:"Como eram as ruas da Lisboa pombalina?", opts:["Largas, retas e perpendiculares","Estreitas e irregulares","Em escadinhas"], ans:0, mis:"m_ruas"}, alt:{txt:"Compara: ANTES do terramoto, ruas estreitas e irregulares. DEPOIS, ruas largas e paralelas que se cruzam em ângulo reto, com passeios e esgotos.", q:{q:"As ruas estreitas e tortas eram da Lisboa…", opts:["anterior ao terramoto","pombalina"], ans:0}}}
+ ]},
+ {id:"L8", t:"Importar, exportar e ordenar o tempo", c:"pombal", steps:[
+  {txt:"Importar é comprar fora; exportar é vender para fora. Se recebes 10 € de mesada e gastas 15 €, ficas a dever 5 €. Portugal comprava à Inglaterra muito mais do que lhe vendia.", an:"Analogia: a mesada.", q:{q:"No gráfico, Portugal em 1756 importava muito mais do que exportava. Isso quer dizer que…", opts:["comprava mais do que vendia","vendia mais do que comprava","não comprava nada"], ans:0, mis:"m_balanca"}, alt:{txt:"Truque: IMportar = entrar (os produtos entram no país). EXportar = sair (os produtos saem). Muitos produtos a entrar e poucos a sair significa gastar mais do que se ganha.", q:{q:"Exportar é…", opts:["vender produtos para fora do país","comprar produtos ao estrangeiro"], ans:0}}},
+  {txt:"Pombal criou indústrias (sedas, vidros, cordas) para fazer cá dentro o que se comprava lá fora. Menos importações = menos dinheiro a sair do país.", an:"Analogia: fazer o lanche em casa em vez de o comprar no bar.", q:{q:"Porque criou Pombal novas indústrias?", opts:["Para reduzir as importações","Para aumentar as importações","Para acabar com o comércio"], ans:0}, alt:{txt:"Se Portugal produzir os seus próprios tecidos, já não precisa de os comprar aos ingleses. É isso que se vê no gráfico depois de 1756: as importações descem.", q:{q:"Depois das medidas de Pombal, as importações…", opts:["diminuíram","aumentaram muito"], ans:0}}},
+  {txt:"Para saber o século de um ano, tira os dois últimos números e soma 1: 1755 → 17 + 1 = século XVIII. Atenção aos anos redondos: 1700 ainda é do século XVII.", an:"Regra: dois primeiros algarismos + 1.", q:{q:"Em que século foi o terramoto de 1755?", opts:["XVIII","XVII","XIX"], ans:0, mis:"m_seculo"}, alt:{txt:"O século XVIII vai de 1701 a 1800. 1755 está nesse intervalo, tal como 1706 (início do reinado de D. João V).", q:{q:"D. João V começou a reinar em 1706. Século?", opts:["XVIII","XVII","XVI"], ans:0}}}
+ ]}
+];
+
+/* ===================== TESTE (20 perguntas) ===================== */
+var TEST = [
+ {k:"Conceptual", d:"C", c:"imperio", type:"choice", q:"No século XVIII, qual era a colónia mais importante do império português?", opts:["Brasil","Índia","Angola","Macau"], ans:0, mis:{1:"m_oriente"}, exp:"O Brasil fornecia açúcar, ouro e diamantes."},
+ {k:"Conceptual", d:"C", c:"engenho", type:"choice", q:"O que era um engenho de açúcar?", opts:["Uma propriedade onde se plantava cana e se produzia açúcar","O alojamento das pessoas escravizadas","Uma mina de ouro","Um navio que levava açúcar para a Europa"], ans:0, exp:"O engenho incluía canavial, moenda, caldeiras, casa grande e sanzala."},
+ {k:"Conceptual", d:"C", c:"absolutismo", type:"choice", q:"O que é uma monarquia absoluta?", opts:["O rei concentra todos os poderes e governa sem Cortes","O rei partilha o poder com as Cortes","O povo elege o governo","O primeiro-ministro manda mais do que o rei"], ans:0, mis:{1:"m_cortes"}, exp:"Legislativo, executivo e judicial ficam no rei."},
+ {k:"Conceptual", d:"C", c:"sociedade", type:"choice", q:"Quais eram os grupos privilegiados no século XVIII?", opts:["Clero e nobreza","Nobreza e burguesia","Clero e povo","Burguesia e povo"], ans:0, mis:{1:"m_burguesia",3:"m_burguesia"}, exp:"Clero e nobreza não pagavam impostos."},
+ {k:"Conceptual", d:"C", c:"terramoto", type:"multi", q:"Que calamidades atingiram Lisboa a 1 de novembro de 1755? (escolhe três)", opts:["Terramoto","Maremoto","Incêndios","Erupção vulcânica"], ans:[0,1,2], exp:"Terramoto, maremoto e incêndios."},
+ {k:"Cenário real", d:"B", c:"engenho", type:"choice", q:"És um colono no Brasil em 1720 e tens um engenho. Segundo as fontes, quem trabalharia no teu canavial?", opts:["Pessoas escravizadas trazidas de África","Indígenas pagos com salário","Camponeses portugueses com contrato","Os bandeirantes"], ans:0, mis:{1:"m_indios"}, exp:"A mão de obra principal era escravizada e vinha de África."},
+ {k:"Problema", d:"B", c:"ouro", type:"choice", q:"Numa casa de fundição de Minas Gerais chegam 100 kg de ouro. Quantos quilos ficam para o rei com o quinto?", opts:["20 kg","5 kg","50 kg","1 kg"], ans:0, mis:{1:"m_quinto",2:"m_quinto",3:"m_quinto"}, exp:"Quinto = 1/5 = 20%. 100 ÷ 5 = 20 kg."},
+ {k:"Cenário real", d:"B", c:"barroco", type:"choice", q:"Numa visita de estudo entras numa igreja com paredes cobertas de talha dourada, colunas em espiral, anjos e azulejos. Que estilo é?", img:"igreja-almancil.jpg", opts:["Barroco","Gótico","Pombalino","Manuelino"], ans:0, mis:{2:"m_barroco"}, exp:"Talha dourada, colunas torsas e decoração abundante: barroco (aqui, a igreja de São Lourenço de Almancil)."},
+ {k:"Conceptual", d:"B", c:"inquisicao", type:"choice", q:"Quem presidia ao Tribunal da Inquisição?", opts:["O clero","A nobreza","O rei","A burguesia"], ans:0, mis:{1:"m_inquisicao",2:"m_inquisicao"}, exp:"Era um tribunal da Igreja."},
+ {k:"Cenário real", d:"B", c:"pombal", type:"choice", q:"Um comerciante inglês do Porto ficou furioso com a criação da Companhia das Vinhas do Alto Douro (1756). Porquê?", opts:["Perdeu o controlo do comércio do vinho do Porto","A companhia proibiu a produção de vinho","Portugal declarou guerra à Inglaterra","A companhia pertencia aos jesuítas"], ans:0, exp:"Os ingleses dominavam esse comércio; a companhia passou a controlá-lo."},
+ {k:"Problema", d:"B", c:"tempo", type:"choice", q:"D. João V reinou de 1706 a 1750. A que século pertence o seu reinado?", opts:["XVIII","XVII","XIX","XVI"], ans:0, mis:{1:"m_seculo",2:"m_seculo",3:"m_seculo"}, exp:"Século XVIII = 1701 a 1800."},
+ {k:"Problema", d:"B", c:"pombal", type:"choice", q:"Observa o gráfico. Em 1756, as importações rondavam 1,1 milhões de libras e as exportações 0,3 milhões. O que concluis?", img:"grafico-comercio-inglaterra.jpg", opts:["Portugal comprava aos ingleses muito mais do que lhes vendia","Portugal vendia aos ingleses muito mais do que lhes comprava","As trocas estavam equilibradas","Portugal não comerciava com Inglaterra"], ans:0, mis:{1:"m_balanca"}, exp:"Importações (azul) muito maiores do que exportações (vermelho): Portugal gastava mais do que ganhava."},
+ {k:"Cenário real", d:"A", c:"terramoto", type:"multi", q:"És o arquiteto Eugénio dos Santos em 1758 e desenhas um prédio para a nova Baixa. O que incluis? (escolhe três)", opts:["Gaiola de madeira antissísmica","A mesma altura que os prédios vizinhos","Paredes corta-fogo","Uma rua estreita e sinuosa à porta","Uma fachada diferente de todas as outras"], ans:[0,1,2], mis:{3:"m_ruas"}, exp:"Prédios iguais, com gaiola e paredes corta-fogo, em ruas largas e retas."},
+ {k:"Conceptual", d:"A", c:"pombal", type:"choice", q:"Qual destas medidas de Pombal pertence ao <b>ensino</b>?", opts:["Reforma da Universidade de Coimbra","Companhia das Vinhas do Alto Douro","Fim da distinção entre cristãos-novos e cristãos-velhos","Proibição da entrada de escravos no reino"], ans:0, exp:"As outras são medidas económicas ou sociais."},
+ {k:"Desafio", d:"A", c:"pombal", type:"choice", q:"Verdadeiro ou falso: «O Marquês de Pombal acabou com a escravatura em todo o império português.»", opts:["Falso","Verdadeiro"], ans:0, mis:{1:"m_escravatura"}, exp:"Em 1761 proibiu a entrada de pessoas escravizadas no reino; nas colónias, como o Brasil, a escravatura continuou."},
+ {k:"Desafio", d:"A", c:"imperio", type:"choice", q:"Qual é a melhor explicação para os portugueses terem virado as atenções para o Brasil no século XVII?", opts:["A crise do Oriente: concorrência de holandeses, ingleses e franceses, piratas e naufrágios","A descoberta de especiarias no Brasil","Um acordo com a Espanha","O fim do comércio mundial"], ans:0, mis:{1:"m_oriente"}, exp:"Perdendo lucros no Oriente, Portugal apostou no Atlântico."},
+ {k:"Desafio", d:"A", c:"tempo", type:"order", q:"Ordena do mais antigo para o mais recente.", items:["Descoberta de ouro no Brasil","Início da construção de Mafra","Morte de D. João V","Terramoto de Lisboa","Expulsão dos jesuítas"], exp:"Ouro (fins do séc. XVII) → Mafra (1717) → morte de D. João V (1750) → terramoto (1755) → expulsão dos jesuítas (1759)."},
+ {k:"Desafio", d:"A", c:"absolutismo", type:"choice", q:"Num documento lê-se: «O trono real não é o trono de um homem, mas o trono do próprio Deus.» Que ideia defende?", img:"poderes-do-rei.jpg", opts:["A origem divina do poder do rei","Que o rei devia ser padre","Que o povo escolhia o rei","Que as Cortes mandavam no rei"], ans:0, mis:{3:"m_cortes"}, exp:"O rei absoluto dizia receber o poder de Deus, por isso não prestava contas a ninguém."},
+ {k:"Desafio", d:"A", c:"sociedade", type:"choice", q:"Um rico comerciante de Lisboa, em 1765, quer tornar-se nobre. Qual é o único caminho?", opts:["Receber um título do rei","Comprar um palácio e coches","Casar-se com alguém do povo","Pagar mais impostos"], ans:0, mis:{1:"m_nascimento"}, exp:"Só o rei podia nobilitar. Pombal fê-lo com vários burgueses."},
+ {k:"Desafio", d:"A", c:"engenho", type:"open", q:"Explica, com pelo menos três ideias, porque é que a população do Brasil é hoje tão diversa.", groups:[{n:"colonos portugueses/europeus",k:["portugu","europe","colono","emigr"]},{n:"africanos escravizados",k:["africa","escrav","trafic"]},{n:"povos indígenas",k:["indigen","indio","nativ","amerindi"]},{n:"misturas e descendentes",k:["mestic","mistur","descend","casament","cruzament","filhos"]}], min:3, exp:"Colonos portugueses e europeus, milhões de africanos escravizados e os povos indígenas viveram juntos durante séculos; os seus descendentes misturaram-se.", model:"Para o Brasil foram colonos portugueses, foram levados à força milhões de africanos escravizados e já lá viviam os povos indígenas. Os descendentes destes povos misturaram-se, por isso a população é tão diversa."}
+];
+
+/* ===================== GLOSSÁRIO ===================== */
+var GLOSS = [
+ ["Absolutismo","Sistema em que o rei concentra todos os poderes (legislativo, executivo e judicial)."],
+ ["Antissísmico","Construído para resistir a sismos. Ex.: a gaiola pombalina."],
+ ["Aqueduto das Águas Livres","Obra de D. João V que levava água a Lisboa; os arcos sobre o vale de Alcântara são dos maiores do mundo em pedra."],
+ ["Arroba","Antiga medida de peso, com cerca de 15 kg. Usada para medir o açúcar."],
+ ["Auto de fé","Cerimónia pública em que se liam as sentenças da Inquisição."],
+ ["Bandeirantes","Exploradores que partiam do litoral para o interior do Brasil à procura de ouro, diamantes e indígenas para escravizar."],
+ ["Barroco","Estilo artístico exuberante: muita decoração, curvas e contracurvas, colunas torsas, talha dourada e azulejos."],
+ ["Bateia","Bacia usada para lavar a areia dos rios e separar o ouro."],
+ ["Biblioteca Joanina","Biblioteca barroca da Universidade de Coimbra, mandada construir por D. João V."],
+ ["Burguesia","Grupo do povo que enriquecia com o comércio e procurava imitar a nobreza."],
+ ["Casa grande","Habitação do senhor do engenho."],
+ ["Clero","Grupo social privilegiado dedicado ao culto, ao ensino e à assistência; dirigia a Inquisição."],
+ ["Colónia","Território dominado e explorado por outro país."],
+ ["Companhia comercial","Empresa com o exclusivo de um comércio, criada por Pombal (ex.: Vinhas do Alto Douro, 1756)."],
+ ["Contrabando","Comércio feito às escondidas para fugir aos impostos."],
+ ["Corte","O rei, a família real e os nobres que viviam junto dele."],
+ ["Cortes","Assembleia com representantes do clero, da nobreza e do povo que aconselhava o rei."],
+ ["Cristão-novo","Descendente de judeus obrigados a converter-se ao cristianismo (1497)."],
+ ["Engenho","Grande propriedade onde se cultivava a cana e se produzia açúcar; também o nome da fábrica do açúcar."],
+ ["Escolas menores","Escolas criadas por Pombal onde se aprendia a ler, escrever e contar."],
+ ["Exportação","Venda de produtos ao estrangeiro."],
+ ["Gaiola pombalina","Estrutura de madeira cruzada dentro das paredes que torna os prédios resistentes aos sismos."],
+ ["Importação","Compra de produtos ao estrangeiro."],
+ ["Império","Conjunto de territórios dominados por um país."],
+ ["Inquisição (Santo Ofício)","Tribunal religioso, dirigido pelo clero, que perseguia quem não respeitasse a fé católica."],
+ ["Jesuítas","Ordem religiosa que dirigia muitas escolas; foi expulsa por Pombal em 1759."],
+ ["Mafra (Palácio-Convento)","A maior obra barroca de D. João V, iniciada em 1717."],
+ ["Maremoto","Ondas gigantes provocadas por um sismo no fundo do mar (tsunami)."],
+ ["Marquês de Pombal","Sebastião José de Carvalho e Melo, ministro de D. José I; dirigiu a reconstrução de Lisboa."],
+ ["Monarquia absoluta","Regime hereditário e vitalício em que o rei governa sem Cortes e reúne todos os poderes."],
+ ["Moenda","Máquina que esmagava a cana para extrair o caldo."],
+ ["Nobreza","Grupo social privilegiado ligado à guerra, à defesa e à governação."],
+ ["Povo","Grupo não privilegiado: camponeses, artesãos, criados, comerciantes; pagava impostos."],
+ ["Quinto","Imposto: a quinta parte (20%) do ouro extraído pertencia ao rei."],
+ ["Sanzala (senzala)","Alojamento das pessoas escravizadas num engenho."],
+ ["Talha dourada","Madeira esculpida e revestida de folha de ouro."],
+ ["Tráfico negreiro","Comércio de pessoas escravizadas, sobretudo de África para o Brasil, em navios negreiros."]
+];
+
+</script>
+<script>
+(function(){
+"use strict";
+var PRISTINE = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+var APP = "Rumo do Século XVIII";
+var CFG0 = window.APP_CONFIG || {mode:"professor"};
+var STUDENT = CFG0.mode === "aluno";
+var KEY = STUDENT ? "rota18-aluno-v1" : "rota18-prof-v1";
+var PASS = 0.6;
+
+/* ---------- estado ---------- */
+function blank(){ return {student:{nome:"",turma:""}, ex:{}, lv:{}, lab:{}, mis:{}, test:null, sent:{}, cfg:{}, unlockAll:false}; }
+var S = load();
+function load(){ try{ var t = localStorage.getItem(KEY); if(t){ var o = JSON.parse(t); var b = blank(); for(var k in b) if(!(k in o)) o[k]=b[k]; return o; } }catch(e){} return blank(); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function cfg(){ if(STUDENT) return {email:CFG0.email||"", gas:CFG0.gas||""}; var c=S.cfg||{}; return {email:c.email||"", gas:c.gas||""}; }
+function needId(){ var c=cfg(); return !!(c.email||c.gas); }
+
+/* ---------- utilidades ---------- */
+function $(s,r){ return (r||document).querySelector(s); }
+function h(tag, p){ var el=document.createElement(tag); if(p) for(var k in p){ var v=p[k]; if(v==null) continue;
+  if(k==="html") el.innerHTML=v; else if(k==="text") el.textContent=v; else if(k==="class") el.className=v;
+  else if(k.slice(0,2)==="on") el.addEventListener(k.slice(2), v); else if(k==="style") el.setAttribute("style",v); else el.setAttribute(k,v); }
+  for(var i=2;i<arguments.length;i++){ add(el, arguments[i]); } return el; }
+function add(el,c){ if(c==null||c===false) return; if(Array.isArray(c)) c.forEach(function(x){add(el,x)}); else if(typeof c==="string") el.appendChild(document.createTextNode(c)); else el.appendChild(c); }
+function norm(s){ return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[«»"'.,;:!?()]/g," ").replace(/\s+/g," ").trim(); }
+function shuffle(a,seed){ var r=a.slice(), s=seed||1; for(var i=r.length-1;i>0;i--){ s=(s*9301+49297)%233280; var j=Math.floor(s/233280*(i+1)); var t=r[i]; r[i]=r[j]; r[j]=t; } return r; }
+function seedOf(str){ var s=0; for(var i=0;i<str.length;i++) s=(s*31+str.charCodeAt(i))%233280; return s+7; }
+function pct(x){ return Math.round(x*100); }
+function fmt(x){ return (Math.round(x*10)/10).toString().replace(".",","); }
+function classif(p){ return p>=90?"Muito Bom":p>=70?"Bom":p>=50?"Suficiente":"Insuficiente"; }
+function strip(t){ var d=document.createElement("div"); d.innerHTML=t; return d.textContent; }
+function figs(ex){ var list = ex.imgs ? ex.imgs.slice() : (ex.img ? [ex.img] : []); if(!list.length) return null;
+  return h("div",{class:"figs"}, list.map(function(src,i){ return h("figure",null, h("img",{src:src, alt:(ex.cap||"Documento")+" "+(i+1), loading:"lazy"}), (ex.cap&&list.length===1)?h("figcaption",{text:ex.cap}):null); })); }
+function noteMis(ids){ ids.forEach(function(m){ if(m){ S.mis[m]=(S.mis[m]||0)+1; } }); }
+function copyText(txt, st){ function fb(){ var ta=h("textarea",{style:"position:fixed;left:-9999px"}); ta.value=txt; document.body.appendChild(ta); ta.select(); var ok=false; try{ ok=document.execCommand("copy"); }catch(e){} ta.remove(); st.textContent = ok?"Copiado.":"Não foi possível copiar automaticamente: selecione o texto e copie."; st.className="status "+(ok?"ok":"bad"); }
+  try{ navigator.clipboard.writeText(txt).then(function(){ st.textContent="Copiado."; st.className="status ok"; }, fb); }catch(e){ fb(); } }
+
+/* ---------- motor de exercícios ---------- */
+var LET = "abcdefghij";
+function Exercise(ex, num, opt){
+  opt = opt||{};
+  var box = h("div",{class:"ex", id:"ex-"+ex.id});
+  var st = {};
+  var body = h("div",{class:"stack"});
+  var fb = h("div",{role:"status"});
+  var bVer = h("button",{class:"btn", type:"button", text:"Verificar"});
+  var bRe = h("button",{class:"btn quiet", type:"button", text:"Tentar de novo", hidden:""});
+  var api = build(ex, body, st);
+  box.appendChild(h("div",{class:"qn"}, h("span",{class:"n", text:String(num)}), h("div",{html:ex.q})));
+  var f = figs(ex); if(f && ex.type!=="hotmulti" && ex.type!=="hotseq") box.appendChild(f);
+  box.appendChild(body);
+  box.appendChild(h("div",{class:"row"}, bVer, bRe));
+  box.appendChild(fb);
+  bVer.addEventListener("click", function(){
+    var r = api.check();
+    if(r.incomplete){ fb.className="fb part"; fb.innerHTML="<b class='h'>Falta responder.</b>"+r.incomplete; return; }
+    bVer.hidden = true; bRe.hidden = false;
+    var cls = r.score>=0.999?"ok":r.score>=0.5?"part":"bad";
+    box.classList.remove("done-ok","done-part","done-bad"); box.classList.add("done-"+cls);
+    var head = cls==="ok"?"Muito bem!":cls==="part"?"Quase. Revê o que está assinalado.":"Ainda não. Lê a explicação.";
+    var misT = (r.mis||[]).filter(Boolean).map(function(m){ return "<li>"+MIS[m]+"</li>"; }).join("");
+    fb.className = "fb "+cls;
+    fb.innerHTML = "<b class='h'>"+head+" ("+pct(r.score)+"%)</b>"+(r.extra||"")+(ex.exp?"<div>"+ex.exp+"</div>":"")+(misT?"<div class='small'><b>Atenção a este equívoco:</b><ul class='mis'>"+misT+"</ul></div>":"");
+    var rec = S.ex[ex.id] || {first:r.score, best:0, n:0};
+    rec.best = Math.max(rec.best, r.score); rec.n++; S.ex[ex.id]=rec;
+    if(rec.n===1) noteMis(r.mis||[]);
+    save();
+    if(opt.onDone) opt.onDone(ex.id, r.score);
+  });
+  bRe.addEventListener("click", function(){ var nb = Exercise(ex, num, opt); box.replaceWith(nb); });
+  return box;
+}
+
+function build(ex, body, st){
+  var t = ex.type, seed = seedOf(ex.id);
+  if(t==="choice"||t==="multi"){
+    var multi = t==="multi"; st.sel = multi?[]:-1;
+    var btns = ex.opts.map(function(o,i){ var b=h("button",{class:"opt"+(multi?" multi":""), type:"button","aria-pressed":"false"}, h("span",{class:"box"}), h("span",{html:o}));
+      b.addEventListener("click", function(){ if(st.locked) return; if(multi){ var k=st.sel.indexOf(i); if(k<0) st.sel.push(i); else st.sel.splice(k,1); b.setAttribute("aria-pressed", k<0?"true":"false"); } else { st.sel=i; btns.forEach(function(x,j){ x.setAttribute("aria-pressed", j===i?"true":"false"); }); } }); return b; });
+    body.appendChild(h("div",{class:"opts"}, btns));
+    return {check:function(){
+      if(multi? !st.sel.length : st.sel<0) return {incomplete:"Escolhe uma opção."};
+      st.locked=true; var mis=[];
+      if(!multi){ var ok=st.sel===ex.ans; btns[st.sel].classList.add(ok?"ok":"bad"); if(!ok){ btns[ex.ans].classList.add("miss"); if(ex.mis&&ex.mis[st.sel]) mis.push(ex.mis[st.sel]); } return {score:ok?1:0, mis:mis}; }
+      var hits=0, wrong=0; btns.forEach(function(b,i){ var picked=st.sel.indexOf(i)>=0, good=ex.ans.indexOf(i)>=0;
+        if(picked&&good){hits++; b.classList.add("ok");} else if(picked){wrong++; b.classList.add("bad"); if(ex.mis&&ex.mis[i]) mis.push(ex.mis[i]);} else if(good) b.classList.add("miss"); });
+      var sc = (hits===ex.ans.length&&!wrong)?1:Math.max(0,(hits-wrong)/ex.ans.length); return {score:sc, mis:mis}; }};
+  }
+  if(t==="imgpick"){
+    st.sel=[];
+    var bs = ex.imgs.map(function(im,i){ var b=h("button",{type:"button","aria-pressed":"false"}, h("img",{src:im.src, alt:im.cap}), h("span",{text:im.cap}));
+      b.addEventListener("click",function(){ if(st.locked) return; var k=st.sel.indexOf(i); if(k<0) st.sel.push(i); else st.sel.splice(k,1); b.setAttribute("aria-pressed",k<0?"true":"false"); }); return b; });
+    body.appendChild(h("div",{class:"imgpick"}, bs));
+    return {check:function(){ if(!st.sel.length) return {incomplete:"Seleciona pelo menos uma imagem."}; st.locked=true; var hits=0,wrong=0,mis=[];
+      bs.forEach(function(b,i){ var p=st.sel.indexOf(i)>=0, g=ex.ans.indexOf(i)>=0; if(p&&g){hits++;b.classList.add("ok");} else if(p){wrong++;b.classList.add("bad"); if(ex.mis&&ex.mis[i]) mis.push(ex.mis[i]);} else if(g) b.classList.add("miss"); });
+      return {score:(hits===ex.ans.length&&!wrong)?1:Math.max(0,(hits-wrong)/ex.ans.length), mis:mis}; }};
+  }
+  if(t==="tf"){
+    st.v = ex.items.map(function(){return null});
+    var rows = ex.items.map(function(it,i){ var bv=h("button",{type:"button","aria-pressed":"false",text:"V"}), bf=h("button",{type:"button","aria-pressed":"false",text:"F"});
+      function set(v){ if(st.locked) return; st.v[i]=v; bv.setAttribute("aria-pressed",v===true?"true":"false"); bf.setAttribute("aria-pressed",v===false?"true":"false"); }
+      bv.addEventListener("click",function(){set(true)}); bf.addEventListener("click",function(){set(false)});
+      var fix=h("div",{class:"fix",hidden:""});
+      return {el:h("div",{class:"tfrow"}, h("span",{html:it.t}), h("span",{class:"seg"},bv,bf), fix), bv:bv, bf:bf, fix:fix}; });
+    body.appendChild(h("div",null, rows.map(function(r){return r.el})));
+    return {check:function(){ if(st.v.some(function(x){return x===null})) return {incomplete:"Classifica todas as afirmações."}; st.locked=true; var ok=0, mis=[];
+      ex.items.forEach(function(it,i){ var r=rows[i], good=st.v[i]===it.v; if(good) ok++; else if(it.mis) mis.push(it.mis);
+        (st.v[i]?r.bv:r.bf).classList.add(good?"ok":"bad");
+        if(!it.v && it.fix){ r.fix.hidden=false; r.fix.innerHTML="<b>Correção:</b> "+it.fix; } else if(!good){ r.fix.hidden=false; r.fix.textContent="Esta afirmação é verdadeira."; } });
+      return {score:ok/ex.items.length, mis:mis}; }};
+  }
+  if(t==="match"){
+    st.pair = ex.left.map(function(){return -1}); st.cur=-1;
+    var order = shuffle(ex.right.map(function(_,i){return i}), seed);
+    var lb = ex.left.map(function(l,i){ var b=h("button",{class:"mitem",type:"button"}, h("span",{class:"tag",text:String(i+1)}), h("span",{text:l})); b.addEventListener("click",function(){ if(st.locked) return; st.cur=i; paint(); }); return b; });
+    var rb = order.map(function(ri,pos){ var tag=h("span",{class:"tag",text:LET[pos]}); var b=h("button",{class:"mitem",type:"button"}, tag, h("span",{text:ex.right[ri]})); b._ri=ri; b._tag=tag; b._pos=pos;
+      b.addEventListener("click",function(){ if(st.locked||st.cur<0) return; for(var k=0;k<st.pair.length;k++) if(st.pair[k]===ri) st.pair[k]=-1; st.pair[st.cur]=ri; st.cur=-1; paint(); }); return b; });
+    function paint(){ lb.forEach(function(b,i){ b.classList.toggle("sel", st.cur===i); var p=st.pair[i]; b.firstChild.textContent = String(i+1)+(p>=0?"→"+LET[order.indexOf(p)]:""); });
+      rb.forEach(function(b){ var who=st.pair.indexOf(b._ri); b._tag.textContent = LET[b._pos]+(who>=0?"·"+(who+1):""); b._tag.style.background = who>=0?"var(--sea)":""; b._tag.style.color = who>=0?"var(--paper)":""; }); }
+    body.appendChild(h("p",{class:"small muted",text:"1.º clica num número à esquerda; 2.º clica na letra certa à direita. Podes mudar as ligações."}));
+    body.appendChild(h("div",{class:"match"}, h("div",{class:"col"},lb), h("div",{class:"col"},rb)));
+    return {check:function(){ if(st.pair.some(function(p){return p<0})) return {incomplete:"Liga todos os elementos da esquerda."}; st.locked=true; var ok=0; var sol=[];
+      st.pair.forEach(function(p,i){ var g=p===ex.ans[i]; if(g) ok++; lb[i].classList.add(g?"ok":"bad"); sol.push((i+1)+"–"+LET[order.indexOf(ex.ans[i])]); });
+      return {score:ok/ex.left.length, extra:"<div>Ligações certas: "+sol.join(", ")+".</div>"}; }};
+  }
+  if(t==="fill"){
+    var parts = ex.text.split(/\{(\d+)\}/); var wrap=h("div",{class:"fill"}); var ctrls=[];
+    var bank = ex.bank ? shuffle(ex.bank, seed) : null;
+    if(bank && !ex.typed) body.appendChild(h("div",{class:"bank"}, bank.map(function(w){return h("span",{text:w})})));
+    parts.forEach(function(p,i){ if(i%2===0){ wrap.appendChild(document.createTextNode(p)); return; } var gi=+p, c;
+      if(ex.typed || !bank){ c=h("input",{type:"text", "aria-label":"Espaço "+(gi+1), size:"12", autocomplete:"off", spellcheck:"false"}); }
+      else { c=h("select",{"aria-label":"Espaço "+(gi+1)}, h("option",{value:"",text:"…"}), bank.map(function(w){return h("option",{value:w,text:w})})); }
+      c._g=gi; ctrls[gi]=c; wrap.appendChild(c); });
+    body.appendChild(wrap);
+    return {check:function(){ if(ctrls.some(function(c){return !c.value.trim()})) return {incomplete:"Preenche todos os espaços."}; st.locked=true; var ok=0, used={};
+      ctrls.forEach(function(c,gi){ var v=norm(c.value), grp0=ex.group&&ex.group[gi], acc=[];
+        if(grp0){ Object.keys(ex.group).forEach(function(k){ if(ex.group[k]===grp0) acc=acc.concat(ex.gaps[k].map(norm)); }); } else acc=ex.gaps[gi].map(norm);
+        var good=acc.indexOf(v)>=0;
+        var grp=ex.group&&ex.group[gi]; if(good&&grp){ used[grp]=used[grp]||{}; if(used[grp][v]) good=false; else used[grp][v]=1; }
+        c.classList.add(good?"ok":"bad"); c.disabled=true; if(good) ok++; else c.title="Resposta: "+ex.gaps[gi][0]; });
+      return {score:ok/ctrls.length}; }};
+  }
+  if(t==="short"){
+    var ins = ex.items.map(function(it,i){ var inp=h("input",{type:"text",style:"width:100%","aria-label":strip(it.q),autocomplete:"off"}); var m=h("div",{class:"small muted",hidden:""}); body.appendChild(h("label",{class:"f"}, h("span",{text:(i+1)+". "+it.q}), inp, m)); return {inp:inp,m:m}; });
+    return {check:function(){ if(ins.some(function(x){return !x.inp.value.trim()})) return {incomplete:"Responde a todas as alíneas."}; var ok=0;
+      ex.items.forEach(function(it,i){ var v=norm(ins[i].inp.value), g=it.acc.some(function(a){ return v.indexOf(norm(a))>=0; }); if(g) ok++; ins[i].inp.classList.add(g?"ok":"bad"); ins[i].inp.style.borderColor=g?"var(--ok)":"var(--bad)"; ins[i].inp.disabled=true; ins[i].m.hidden=false; ins[i].m.textContent=(g?"Certo. ":"Resposta esperada: ")+it.model; });
+      return {score:ok/ex.items.length}; }};
+  }
+  if(t==="open"){
+    var ta=h("textarea",{"aria-label":"A tua resposta", placeholder:"Escreve aqui a tua resposta com frases completas."}); body.appendChild(ta);
+    return {check:function(){ var v=norm(ta.value); if(v.split(" ").length<3) return {incomplete:"Escreve pelo menos uma frase."}; ta.disabled=true; var got=0;
+      var li = ex.groups.map(function(g){ var hit=g.k.some(function(k){ return v.indexOf(norm(k))>=0; }); if(hit) got++; return "<li class='"+(hit?"got":"no")+"'>"+(hit?"✓ ":"✗ ")+g.n+"</li>"; }).join("");
+      var sc=Math.min(1, got/ex.min);
+      return {score:sc, extra:"<div class='small'>Ideias encontradas na tua resposta ("+got+"; precisas de "+ex.min+"):<ul class='kwlist'>"+li+"</ul></div><div><b>Resposta-modelo:</b> "+ex.model+"</div><div class='small muted'>A correção procura palavras-chave. Se escreveste a ideia por outras palavras, compara com a resposta-modelo.</div>"}; }};
+  }
+  if(t==="sort"){
+    st.v = ex.items.map(function(){return -1});
+    var items = shuffle(ex.items.map(function(_,i){return i}), seed);
+    var rows2 = {};
+    items.forEach(function(ii){ var it=ex.items[ii]; var seg=h("span",{class:"seg"}); var bts=ex.cats.map(function(c,ci){ var b=h("button",{type:"button","aria-pressed":"false",text:c}); b.addEventListener("click",function(){ if(st.locked) return; st.v[ii]=ci; bts.forEach(function(x,k){x.setAttribute("aria-pressed",k===ci?"true":"false")}); }); seg.appendChild(b); return b; });
+      var row=h("div",{class:"sortrow"}, h("span",{text:it.t}), seg); rows2[ii]={row:row,bts:bts}; body.appendChild(row); });
+    return {check:function(){ if(st.v.some(function(x){return x<0})) return {incomplete:"Classifica todos os elementos."}; st.locked=true; var ok=0, mis=[];
+      ex.items.forEach(function(it,ii){ var g=st.v[ii]===it.c; if(g) ok++; else if(it.mis) mis.push(it.mis); rows2[ii].row.classList.add(g?"ok":"bad"); rows2[ii].bts[st.v[ii]].classList.add(g?"ok":"bad"); if(!g) rows2[ii].bts[it.c].style.outline="2px dashed var(--ok)"; });
+      return {score:ok/ex.items.length, mis:mis}; }};
+  }
+  if(t==="order"){
+    var disp = function(s){ return ex.hideDates ? s.replace(/\s*\([^)]*\)/g,"") : s; };
+    st.o = shuffle(ex.items.map(function(_,i){return i}), seed+3);
+    if(st.o.every(function(v,i){return v===i})) st.o.reverse();
+    var list=h("div",{class:"olist"});
+    function draw(){ list.innerHTML=""; st.o.forEach(function(ii,pos){ var up=h("button",{type:"button","aria-label":"Subir",text:"▲"}), dn=h("button",{type:"button","aria-label":"Descer",text:"▼"});
+      up.disabled=pos===0||st.locked; dn.disabled=pos===st.o.length-1||st.locked;
+      up.addEventListener("click",function(){ var a=st.o[pos-1]; st.o[pos-1]=st.o[pos]; st.o[pos]=a; draw(); });
+      dn.addEventListener("click",function(){ var a=st.o[pos+1]; st.o[pos+1]=st.o[pos]; st.o[pos]=a; draw(); });
+      var row=h("div",{class:"oitem"+(st.locked?(ii===pos?" ok":" bad"):"")}, h("span",{class:"num",text:(pos+1)+"."}), h("span",{class:"t",text:st.locked?ex.items[ii]:disp(ex.items[ii])}), up, dn); list.appendChild(row); }); }
+    draw(); body.appendChild(h("p",{class:"small muted",text:"Usa as setas para mudar a ordem."})); body.appendChild(list);
+    return {check:function(){ st.locked=true; var ok=0; st.o.forEach(function(ii,pos){ if(ii===pos) ok++; }); draw();
+      return {score:ok/ex.items.length, extra:"<div>Ordem certa: "+ex.items.map(function(s,i){return (i+1)+". "+s}).join(" · ")+"</div>"}; }};
+  }
+  if(t==="grid"){
+    st.v = ex.rows.map(function(){return []});
+    var chipsR = ex.rows.map(function(r,ri){ var multi=ex.ans[ri].length>1; var cs=ex.cols[ri].map(function(c,ci){ var b=h("button",{class:"chip",type:"button","aria-pressed":"false",text:c});
+      b.addEventListener("click",function(){ if(st.locked) return; var a=st.v[ri], k=a.indexOf(ci); if(multi){ if(k<0) a.push(ci); else a.splice(k,1); } else { st.v[ri]=k<0?[ci]:[]; } cs.forEach(function(x,j){ x.setAttribute("aria-pressed", st.v[ri].indexOf(j)>=0?"true":"false"); }); }); return b; });
+      body.appendChild(h("div",{class:"gr"}, h("b",{text:r+(multi?" (várias)":"")}), h("div",{class:"chips"},cs))); return cs; });
+    body.className="gridq";
+    return {check:function(){ if(st.v.some(function(a){return !a.length})) return {incomplete:"Responde em todas as linhas."}; st.locked=true; var ok=0;
+      ex.rows.forEach(function(_,ri){ var a=st.v[ri].slice().sort().join(), b=ex.ans[ri].slice().sort().join(); if(a===b) ok++;
+        chipsR[ri].forEach(function(c,ci){ var p=st.v[ri].indexOf(ci)>=0, g=ex.ans[ri].indexOf(ci)>=0; if(p&&g) c.classList.add("ok"); else if(p) c.classList.add("bad"); else if(g) c.classList.add("miss"); }); });
+      return {score:ok/ex.rows.length}; }};
+  }
+  if(t==="hotmulti"){
+    st.sel=[]; var wrap2=h("div",{class:"hot"}); var img=h("img",{src:ex.img, alt:"Mapa: clica nos continentes"}); wrap2.appendChild(img);
+    var ovs = ex.regions.map(function(rg){ var o=h("div",{class:"rg",hidden:"", style:"left:"+rg.r[0]+"%;top:"+rg.r[1]+"%;width:"+(rg.r[2]-rg.r[0])+"%;height:"+(rg.r[3]-rg.r[1])+"%"}, h("span",{text:rg.n})); wrap2.appendChild(o); return o; });
+    var msg=h("div",{class:"small muted",role:"status",text:"Clica no mapa. Clica de novo para desmarcar."});
+    wrap2.addEventListener("click",function(e){ if(st.locked) return; var b=img.getBoundingClientRect(); var x=(e.clientX-b.left)/b.width*100, y=(e.clientY-b.top)/b.height*100;
+      var hit=-1; ex.regions.forEach(function(rg,i){ if(hit<0 && x>=rg.r[0]&&x<=rg.r[2]&&y>=rg.r[1]&&y<=rg.r[3]) hit=i; });
+      if(hit<0){ msg.textContent="Aí é oceano. Clica num continente."; return; }
+      var k=st.sel.indexOf(hit); if(k<0) st.sel.push(hit); else st.sel.splice(k,1); ovs[hit].hidden = k>=0;
+      msg.textContent="Marcaste: "+(st.sel.map(function(i){return ex.regions[i].n}).join(", ")||"nada"); });
+    body.appendChild(wrap2); body.appendChild(msg);
+    return {check:function(){ if(!st.sel.length) return {incomplete:"Clica pelo menos num continente."}; st.locked=true; var hits=0,wrong=0,need=0;
+      ex.regions.forEach(function(rg,i){ var p=st.sel.indexOf(i)>=0; if(rg.ok) need++; if(p&&rg.ok){hits++; ovs[i].classList.add("ok");} else if(p){wrong++; ovs[i].classList.add("bad");} else if(rg.ok){ ovs[i].hidden=false; ovs[i].classList.add("miss"); } });
+      return {score:(hits===need&&!wrong)?1:Math.max(0,(hits-wrong)/need)}; }};
+  }
+  if(t==="hotseq"){
+    st.a = ex.seq.map(function(){return -1}); st.i=0;
+    var wrap3=h("div",{class:"hot"}); var img3=h("img",{src:ex.img, alt:"Imagem numerada"}); wrap3.appendChild(img3);
+    var pins=h("div"); wrap3.appendChild(pins);
+    var sl=h("div",{class:"seqlist"});
+    function drawS(){ sl.innerHTML=""; ex.seq.map(function(s,i){ var a=st.a[i]; sl.appendChild(h("div",{class:i===st.i&&!st.locked?"cur":""}, (i===st.i&&!st.locked?"➜ Clica no número de: ":"")+s.p+(a>=0?"  →  n.º "+ex.spots[a].n:""))); });
+      pins.innerHTML=""; st.a.forEach(function(a,i){ if(a<0) return; var sp=ex.spots[a]; var col = st.locked ? (a===ex.seq[i].s?"var(--ok)":"var(--bad)") : "var(--sea)"; pins.appendChild(h("div",{class:"pin", style:"left:"+sp.x+"%;top:"+sp.y+"%;background:"+col, text:ex.seq[i].p.slice(0,3)})); }); }
+    wrap3.addEventListener("click",function(e){ if(st.locked||st.i>=ex.seq.length) return; var b=img3.getBoundingClientRect(); var x=(e.clientX-b.left)/b.width*100, y=(e.clientY-b.top)/b.height*100;
+      var best=-1, bd=1e9; ex.spots.forEach(function(sp,k){ var d=Math.hypot(sp.x-x, (sp.y-y)*b.height/b.width); if(d<bd){bd=d;best=k;} });
+      if(bd>16){ return; } st.a[st.i]=best; st.i++; drawS(); });
+    var rs=h("button",{class:"btn quiet sm",type:"button",text:"Recomeçar a legenda"}); rs.addEventListener("click",function(){ if(st.locked) return; st.a=ex.seq.map(function(){return -1}); st.i=0; drawS(); });
+    drawS(); body.appendChild(sl); body.appendChild(wrap3); body.appendChild(h("div",null,rs));
+    return {check:function(){ if(st.a.some(function(a){return a<0})) return {incomplete:"Legenda todas as palavras."}; st.locked=true; var ok=0; st.a.forEach(function(a,i){ if(a===ex.seq[i].s) ok++; }); drawS(); return {score:ok/ex.seq.length}; }};
+  }
+  body.appendChild(h("p",{text:"Tipo de exercício desconhecido."})); return {check:function(){return {score:0}}};
+}
+
+/* ---------- navegação ---------- */
+var VIEWS = ["inicio","percurso","laboratorio","teste","glossario"].concat(STUDENT?[]:["professor"]);
+var route = {v:"inicio", sub:null};
+function go(v, sub){ route={v:v, sub:sub||null}; try{ if(location.hash!=="#"+v) history.replaceState(null,"","#"+v); }catch(e){} render(); window.scrollTo(0,0); }
+function render(){
+  document.querySelectorAll("nav.tabs button").forEach(function(b){ if(b.dataset.v===route.v) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  VIEWS.concat(["professor"]).forEach(function(v){ var el=$("#view-"+v); if(el) el.hidden = v!==route.v; });
+  var v=route.v;
+  if(v==="inicio") rInicio(); else if(v==="percurso") rPercurso(); else if(v==="laboratorio") rLab(); else if(v==="teste") rTeste(); else if(v==="glossario") rGloss(); else if(v==="professor") rProf();
+}
+
+/* ---------- identificação ---------- */
+function gate(el, then){
+  var px=el.id.replace("view-",""); var n=h("input",{type:"text",id:"id-nome-"+px,autocomplete:"off",value:S.student.nome||""}), t=h("input",{type:"text",id:"id-turma-"+px,autocomplete:"off",value:S.student.turma||"",size:"6"});
+  var err=h("p",{class:"status bad",role:"status"});
+  var b=h("button",{class:"btn",type:"submit",text:"Continuar"});
+  var f=h("form",{class:"card stack gate"}, h("h2",{text:"Antes de começar"}), h("p",{class:"muted",text:"O teu professor vai receber os resultados. Escreve o teu nome e a tua turma."}),
+    h("div",{class:"row"}, h("label",{class:"f",for:"id-nome-"+px},"Nome",n), h("label",{class:"f",for:"id-turma-"+px,style:"flex:0 1 120px"},"Turma",t)), err, h("div",null,b));
+  f.addEventListener("submit",function(e){ e.preventDefault(); var nv=n.value.trim(), tv=t.value.trim(); if(!nv||!tv){ err.textContent = !nv?"Escreve o teu nome.":"Escreve a tua turma."; return; } S.student={nome:nv,turma:tv}; save(); then(); });
+  el.appendChild(f);
+}
+function identified(){ return !needId() || (S.student.nome && S.student.turma); }
+
+/* ---------- INÍCIO ---------- */
+function levelProgress(L){ var tot=0, done=0; L.etapas.forEach(function(e){ e.ex.forEach(function(x){ tot++; if(S.ex[x.id]) done++; }); }); return {tot:tot, done:done}; }
+function unlocked(i){ if(S.unlockAll && !STUDENT) return true; if(i===0) return true; var prev=S.lv[LEVELS[i-1].id]; return !!(prev && prev.best>=PASS); }
+function rInicio(){
+  var el=$("#view-inicio"); el.innerHTML="";
+  var all=0, dn=0; LEVELS.forEach(function(L){ var p=levelProgress(L); all+=p.tot; dn+=p.done; });
+  var labDone=LABS.filter(function(l){return S.lab[l.id]&&S.lab[l.id].done}).length;
+  el.appendChild(h("section",{class:"hero"},
+    h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"História e Geografia de Portugal · 6.º ano"}), h("h1",{text:"Portugal no século XVIII"}),
+      h("p",{class:"lead",text:"Do ouro do Brasil ao terramoto de Lisboa. Sobe da planície à montanha: três níveis, doze etapas, um laboratório de ideias difíceis e um teste final."}),
+      S.student.nome ? h("div",{class:"who"}, h("span",{class:"pill",text:S.student.nome+" · "+S.student.turma})) : null),
+    h("figure",null, h("img",{src:"praca-do-comercio.jpg", alt:"Praça do Comércio, em Lisboa, depois da reconstrução pombalina"}), h("figcaption",{text:"Praça do Comércio (antigo Terreiro do Paço), Lisboa."}))));
+  if(needId() && !identified()){ gate(el, function(){ rInicio(); }); }
+  var tl = S.test && S.test.res ? pct(S.test.res.p)+"%" : "por fazer";
+  el.appendChild(h("div",{class:"areas"},
+    area("Percurso","Níveis C → B → A com conceitos, exercícios das fichas e mini-testes.", dn+" de "+all+" exercícios feitos","percurso"),
+    area("Laboratório","As ideias mais difíceis, explicadas em passos curtos e com analogias.", labDone+" de "+LABS.length+" concluídos","laboratorio"),
+    area("Teste","20 perguntas progressivas e um plano de revisão feito para ti.", "Último resultado: "+tl,"teste"),
+    area("Glossário","As palavras-chave do século XVIII.", GLOSS.length+" termos","glossario")));
+  el.appendChild(h("section",{class:"card stack"}, h("h3",{text:"Como funciona"}),
+    h("ul",{class:"mis"}, h("li",{html:"<b>Planície (C)</b>, <b>Planalto (B)</b> e <b>Montanha (A)</b>: as cores dos níveis são as de um mapa de relevo."}),
+      h("li",{html:"Cada etapa tem o conceito, as palavras-chave, um exemplo e os equívocos mais comuns, seguidos dos exercícios."}),
+      h("li",{html:"No fim de cada nível há uma recapitulação e um mini-teste. O nível seguinte abre com <b>pelo menos 60%</b>."}))));
+  if(STUDENT){
+    var zone=h("div",{class:"row"}); var b=h("button",{class:"linkish",type:"button",text:"Novo aluno"});
+    b.addEventListener("click",function(){ zone.innerHTML=""; var yes=h("button",{class:"btn sm",type:"button",text:"Sim, apagar e começar"}), no=h("button",{class:"btn quiet sm",type:"button",text:"Cancelar"});
+      yes.addEventListener("click",function(){ S=blank(); save(); go("inicio"); }); no.addEventListener("click",function(){ rInicio(); });
+      zone.appendChild(h("span",{class:"small",text:"Apagar o progresso deste computador e pedir outro nome?"})); zone.appendChild(yes); zone.appendChild(no); });
+    zone.appendChild(b); el.appendChild(zone);
+  }
+  function area(t,d,s,v){ var b=h("button",{class:"area",type:"button"}, h("b",{text:t}), h("span",{class:"muted small",text:d}), h("span",{class:"pill",text:s})); b.addEventListener("click",function(){go(v)}); return b; }
+}
+
+/* ---------- PERCURSO ---------- */
+function profileSVG(){
+  var W=900,H=220, yOf=function(x){ if(x<300) return 178-x*0.04; if(x<360) return 166-(x-300)*0.9; if(x<600) return 112-(x-360)*0.03; if(x<720) return 105-(x-600)*0.62; if(x<800) return 30+(x-720)*0.15; return 42+(x-800)*0.25; };
+  var pts=[]; for(var x=0;x<=W;x+=10) pts.push(x+","+yOf(x).toFixed(1));
+  var ns="http://www.w3.org/2000/svg";
+  function s(tag,a){ var e=document.createElementNS(ns,tag); for(var k in a) e.setAttribute(k,a[k]); return e; }
+  var svg=s("svg",{viewBox:"0 0 "+W+" "+H, role:"img","aria-label":"Perfil de relevo do percurso: planície, planalto e montanha"});
+  var defs=s("defs",{}); var cp=s("clipPath",{id:"grd"}); cp.appendChild(s("polygon",{points:"0,"+H+" "+pts.join(" ")+" "+W+","+H})); defs.appendChild(cp); svg.appendChild(defs);
+  var g=s("g",{"clip-path":"url(#grd)"});
+  [[0,330,"var(--lv-c)"],[330,640,"var(--lv-b)"],[640,900,"var(--lv-a)"]].forEach(function(r){ g.appendChild(s("rect",{x:r[0],y:0,width:r[1]-r[0],height:H,fill:r[2],opacity:"0.85"})); });
+  svg.appendChild(g);
+  svg.appendChild(s("polyline",{points:pts.join(" "),fill:"none",stroke:"var(--ink)","stroke-width":"1.5",opacity:"0.5"}));
+  [["Planície","0–200 m",20],["Planalto","200–700 m",350],["Montanha","+ de 700 m",660]].forEach(function(l){ var t=s("text",{x:l[2],y:214,class:"lbl"}); t.textContent=l[0]; svg.appendChild(t); var a=s("text",{x:l[2]+(l[0].length*8.2)+6,y:214,class:"alt"}); a.textContent=l[1]; svg.appendChild(a); });
+  var xs={C:[40,105,170,235,300],B:[385,445,505,565,620],A:[680,735,790,845,885]};
+  LEVELS.forEach(function(L,li){ var open=unlocked(li); var arr=L.etapas.map(function(e){return {id:e.id, lab:e.id, e:e}}); arr.push({id:L.id+"R", lab:"✓", recap:true});
+    arr.forEach(function(it,k){ var x=xs[L.id][k], y=yOf(x)-14; var done = it.recap ? (S.lv[L.id]&&S.lv[L.id].best>=PASS) : it.e.ex.every(function(q){return S.ex[q.id]});
+      var mk=s("g",{class:"mk"+(open?"":" locked"), tabindex:open?"0":"-1", role:"button","aria-label":(it.recap?"Recapitulação e mini-teste do nível "+L.id:"Etapa "+it.id+": "+it.e.t)});
+      mk.appendChild(s("circle",{cx:x,cy:y,r:13,fill:done?"var(--ok)":"var(--sea)"})); var tx=s("text",{x:x,y:y+4,"text-anchor":"middle"}); tx.textContent=it.recap?"★":it.id; mk.appendChild(tx);
+      if(open){ var act=function(){ go("percurso", it.recap?{recap:L.id}:{etapa:it.id}); }; mk.addEventListener("click",act); mk.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); act(); } }); }
+      svg.appendChild(mk); }); });
+  return h("div",{class:"profile"}, svg);
+}
+function findEtapa(id){ for(var i=0;i<LEVELS.length;i++){ var L=LEVELS[i]; for(var j=0;j<L.etapas.length;j++) if(L.etapas[j].id===id) return {L:L, li:i, e:L.etapas[j], j:j}; } return null; }
+function rPercurso(){
+  var el=$("#view-percurso"); el.innerHTML="";
+  if(!identified()){ gate(el, function(){ rPercurso(); }); return; }
+  if(route.sub && route.sub.etapa) return rEtapa(el, route.sub.etapa);
+  if(route.sub && route.sub.recap) return rRecap(el, route.sub.recap);
+  el.appendChild(h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"Percurso"}), h("h2",{text:"Da planície à montanha"}), h("p",{class:"muted",text:"Clica numa etapa do perfil ou da lista. Recomendamos seguir a ordem: cada nível prepara o seguinte."})));
+  el.appendChild(profileSVG());
+  if(!STUDENT){ var cb=h("input",{type:"checkbox",id:"unlock-all"}); cb.checked=!!S.unlockAll; cb.addEventListener("change",function(){ S.unlockAll=cb.checked; save(); rPercurso(); });
+    el.appendChild(h("label",{class:"small muted row",for:"unlock-all"}, cb, "Desbloquear todos os níveis (só na versão do professor, para pré-visualizar)")); }
+  var grid=h("div",{class:"levels"});
+  LEVELS.forEach(function(L,li){ var open=unlocked(li), p=levelProgress(L), lv=S.lv[L.id];
+    var c=h("div",{class:"card lvcard", style:"--lvc:"+L.cor}, h("h3",null, "Nível "+L.id+" · "+L.nome, h("span",{text:L.sub+" · "+L.alt})), h("p",{class:"small",text:L.intro}),
+      h("div",{class:"bar"}, h("i",{style:"width:"+pct(p.done/p.tot)+"%"})), h("span",{class:"small muted",text:p.done+" de "+p.tot+" exercícios"}));
+    var list=h("div",{class:"stagelist"});
+    L.etapas.forEach(function(e){ var d=e.ex.filter(function(q){return S.ex[q.id]}).length; var b=h("button",{class:"stagebtn",type:"button"}, h("span",{class:"dot",text:e.id}), h("span",{text:e.t}), h("span",{class:"st",text:d+"/"+e.ex.length}));
+      b.disabled=!open; b.addEventListener("click",function(){ go("percurso",{etapa:e.id}); }); list.appendChild(b); });
+    var rb=h("button",{class:"stagebtn",type:"button"}, h("span",{class:"dot",text:"★"}), h("span",{text:"Recapitulação e mini-teste"}), h("span",{class:"st",text: lv&&lv.best!=null ? pct(lv.best)+"%" : "—"}));
+    rb.disabled=!open; rb.addEventListener("click",function(){ go("percurso",{recap:L.id}); }); list.appendChild(rb);
+    c.appendChild(list);
+    if(!open) c.appendChild(h("p",{class:"lock",text:"Fechado. Abre com pelo menos 60% no mini-teste do nível "+LEVELS[li-1].id+"."}));
+    else if(lv && lv.best>=PASS) c.appendChild(h("span",{class:"pill ok",text:"Nível concluído"}));
+    grid.appendChild(c); });
+  el.appendChild(grid);
+}
+function rEtapa(el, id){
+  var f=findEtapa(id); if(!f||!unlocked(f.li)){ go("percurso"); return; }
+  var L=f.L, e=f.e; el.style.setProperty("--lvc", L.cor);
+  var back=h("button",{class:"btn quiet sm",type:"button",text:"← Percurso"}); back.addEventListener("click",function(){go("percurso")});
+  el.appendChild(h("div",{class:"row"}, back, h("span",{class:"small muted",text:"Nível "+L.id+" · "+L.nome+" · etapa "+(f.j+1)+" de "+L.etapas.length})));
+  el.appendChild(h("div",{class:"stagehead stack", style:"--lvc:"+L.cor}, h("div",{class:"eyebrow",text:"Etapa "+e.id}), h("h2",{text:e.t})));
+  el.appendChild(h("div",{class:"learn"},
+    h("div",{class:"card concept"}, h("h4",{text:"Conceito"}), h("div",{html:e.conceito})),
+    h("div",{class:"card"}, h("h4",{text:"Palavras-chave"}), h("dl",{class:"terms"}, e.termos.map(function(t){ return h("div",null, h("dt",{text:t[0]+": "}), h("dd",{text:t[1]})); }))),
+    h("div",{class:"card stack"}, h("h4",{text:"Exemplo prático"}), h("p",{text:e.exemplo}), h("h4",{text:"Equívocos comuns"}), h("ul",{class:"mis"}, e.equivocos.map(function(m){return h("li",{text:m})})))));
+  el.appendChild(h("h3",{text:"Exercícios da ficha"}));
+  var wrap=h("div",{class:"stack", style:"--lvc:"+L.cor});
+  var nav=h("div",{class:"row"});
+  function navDraw(){ nav.innerHTML=""; var all=e.ex.every(function(q){return S.ex[q.id]});
+    var nxt = f.j<L.etapas.length-1 ? h("button",{class:"btn",type:"button",text:"Etapa seguinte: "+L.etapas[f.j+1].t+" →"}) : h("button",{class:"btn",type:"button",text:"Recapitulação e mini-teste do nível "+L.id+" →"});
+    nxt.addEventListener("click",function(){ if(f.j<L.etapas.length-1) go("percurso",{etapa:L.etapas[f.j+1].id}); else go("percurso",{recap:L.id}); });
+    if(!all && f.j===L.etapas.length-1){ nxt.disabled = !L.etapas.every(function(et){ return et.ex.every(function(q){return S.ex[q.id]}); }); }
+    nav.appendChild(nxt); if(nxt.disabled) nav.appendChild(h("span",{class:"small muted",text:"Faz todos os exercícios do nível para abrir o mini-teste."})); }
+  e.ex.forEach(function(x,i){ wrap.appendChild(Exercise(x, i+1, {onDone:function(){ navDraw(); }})); });
+  el.appendChild(wrap); navDraw(); el.appendChild(nav);
+}
+function rRecap(el, lid){
+  var li=LEVELS.findIndex(function(L){return L.id===lid}); var L=LEVELS[li]; if(!L||!unlocked(li)){ go("percurso"); return; }
+  var ready = (S.unlockAll&&!STUDENT) || L.etapas.every(function(et){ return et.ex.every(function(q){return S.ex[q.id]}); });
+  var back=h("button",{class:"btn quiet sm",type:"button",text:"← Percurso"}); back.addEventListener("click",function(){go("percurso")});
+  el.appendChild(h("div",{class:"row"}, back));
+  el.appendChild(h("div",{class:"stagehead stack", style:"--lvc:"+L.cor}, h("div",{class:"eyebrow",text:"Nível "+L.id+" · "+L.nome}), h("h2",{text:"Recapitulação e mini-teste"})));
+  el.appendChild(h("div",{class:"card recap", style:"--lvc:"+L.cor}, h("h3",{text:"O que tens de levar contigo"}), h("ul",null, L.recap.map(function(r){return h("li",{text:r})}))));
+  if(!ready){ el.appendChild(h("p",{class:"lock",text:"Termina primeiro todos os exercícios das etapas deste nível."})); return; }
+  var lv=S.lv[L.id]||{best:null,tries:0};
+  el.appendChild(h("p",{html:"Responde às 5 perguntas. Precisas de <b>60%</b> para abrir o nível seguinte."+(lv.best!=null?" Melhor resultado até agora: <b>"+pct(lv.best)+"%</b>.":"")}));
+  var res={}; var out=h("div",{role:"status"});
+  var wrap=h("div",{class:"stack", style:"--lvc:"+L.cor});
+  L.mini.forEach(function(q,i){ var qq=Object.assign({},q,{id:q.id+"-t"+(lv.tries||0)}); wrap.appendChild(Exercise(qq,i+1,{onDone:function(id,sc){ if(!(q.id in res)) res[q.id]=sc; if(Object.keys(res).length===L.mini.length) finish(); }})); });
+  el.appendChild(wrap); el.appendChild(out);
+  function finish(){ var avg=0; for(var k in res) avg+=res[k]; avg/=L.mini.length;
+    lv.tries=(lv.tries||0)+1; lv.last=avg; lv.best=Math.max(lv.best||0, avg); S.lv[L.id]=lv; save();
+    out.innerHTML=""; var pass=avg>=PASS;
+    var c=h("div",{class:"card stack"}, h("div",{class:"score",text:pct(avg)+"%"}), h("p",{text: pass ? (li<2 ? "Muito bem! O nível "+LEVELS[li+1].id+" ("+LEVELS[li+1].nome+") está aberto." : "Chegaste ao topo da montanha! Agora experimenta o Teste.") : "Ainda não chegaste aos 60%. Revê as etapas e o Laboratório e repete o mini-teste."}));
+    var row=h("div",{class:"row"});
+    if(pass){ var n=h("button",{class:"btn",type:"button",text: li<2 ? "Ir para o nível "+LEVELS[li+1].id : "Fazer o Teste"}); n.addEventListener("click",function(){ if(li<2) go("percurso",{etapa:LEVELS[li+1].etapas[0].id}); else go("teste"); }); row.appendChild(n); }
+    var r=h("button",{class:"btn ghost",type:"button",text:"Repetir o mini-teste"}); r.addEventListener("click",function(){ go("percurso",{recap:L.id}); }); row.appendChild(r);
+    var lb=h("button",{class:"btn quiet",type:"button",text:"Laboratório"}); lb.addEventListener("click",function(){go("laboratorio")}); row.appendChild(lb);
+    c.appendChild(row); out.appendChild(c); }
+}
+
+/* ---------- LABORATÓRIO ---------- */
+function rLab(){
+  var el=$("#view-laboratorio"); el.innerHTML="";
+  if(route.sub && route.sub.lab) return rLabOne(el, route.sub.lab);
+  el.appendChild(h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"Laboratório"}), h("h2",{text:"Os conceitos mais difíceis, passo a passo"}), h("p",{class:"muted",text:"Cada conceito tem passos curtos com uma analogia. Depois de cada passo há uma pergunta. Se errares, aparece outra explicação e uma nova pergunta."})));
+  var g=h("div",{class:"grid2"});
+  LABS.forEach(function(l){ var r=S.lab[l.id]; var first = r&&r.done ? r.res.filter(function(x){return x==="main"}).length : 0;
+    var b=h("button",{class:"area",type:"button"}, h("b",{text:l.t}), h("span",{class:"small muted",text:CONCEPTS[l.c].n+" · "+l.steps.length+" passos"}), h("span",{class:"pill"+(r&&r.done?" ok":""),text: r&&r.done ? "Concluído · "+first+"/"+l.steps.length+" à primeira" : "Por fazer"}));
+    b.addEventListener("click",function(){ go("laboratorio",{lab:l.id}); }); g.appendChild(b); });
+  el.appendChild(g);
+}
+function rLabOne(el, id){
+  var l=LABS.find(function(x){return x.id===id}); if(!l){ go("laboratorio"); return; }
+  var st={i:0, phase:"main", res:[]};
+  var back=h("button",{class:"btn quiet sm",type:"button",text:"← Laboratório"}); back.addEventListener("click",function(){go("laboratorio")});
+  el.appendChild(h("div",{class:"row"}, back, h("span",{class:"small muted",text:CONCEPTS[l.c].n})));
+  el.appendChild(h("h2",{text:l.t}));
+  var prog=h("div",{class:"labsteps"}); var stage=h("div",{class:"stack"});
+  el.appendChild(prog); el.appendChild(stage);
+  function drawProg(){ prog.innerHTML=""; l.steps.forEach(function(_,k){ prog.appendChild(h("i",{class: k<st.i ? "okk" : k===st.i ? "on" : ""})); }); }
+  function step(){
+    drawProg(); stage.innerHTML="";
+    if(st.i>=l.steps.length) return end();
+    var s=l.steps[st.i]; var isAlt=st.phase==="alt"; var src = isAlt ? s.alt : s;
+    stage.appendChild(h("div",{class:"card stack"}, h("div",{class:"eyebrow",text:"Passo "+(st.i+1)+" de "+l.steps.length+(isAlt?" · outra explicação":"")}), h("p",{html:src.txt}), (!isAlt&&s.an)?h("div",{class:"analogy",text:s.an}):null));
+    var q=src.q; var fb=h("div",{role:"status"});
+    var perm=shuffle(q.opts.map(function(_,k){return k}), seedOf(l.id+st.i+st.phase+Date.now()%97));
+    var btns=[]; q.opts.forEach(function(o,k){ var b=h("button",{class:"opt",type:"button"}, h("span",{class:"box"}), h("span",{text:o}));
+      b.addEventListener("click",function(){ if(fb.dataset.done) return; fb.dataset.done="1"; var ok=k===q.ans; b.classList.add(ok?"ok":"bad");
+        if(ok){ st.res[st.i]=st.phase; fb.className="fb ok"; fb.innerHTML="<b class='h'>Certo!</b>"+(isAlt?"Agora já está. Vamos ao passo seguinte.":"Percebeste à primeira."); fb.appendChild(nextBtn()); }
+        else if(!isAlt){ if(q.mis) noteMis([q.mis]); save(); fb.className="fb bad"; fb.innerHTML="<b class='h'>Ainda não.</b>Vamos ver isto de outra maneira."; var b2=h("button",{class:"btn sm",type:"button",text:"Ver outra explicação"}); b2.addEventListener("click",function(){ st.phase="alt"; step(); }); fb.appendChild(h("div",{style:"margin-top:8px"},b2)); }
+        else { st.res[st.i]="hint"; btns[q.ans].classList.add("miss"); var f=findEtapa(CONCEPTS[l.c].etapa);
+          fb.className="fb part"; fb.innerHTML="<b class='h'>A resposta certa está assinalada.</b>Este passo merece mais atenção. Sugestão: revê a etapa <b>"+CONCEPTS[l.c].etapa+"</b>"+(f?" («"+f.e.t+"»)":"")+" e o Glossário."; fb.appendChild(nextBtn()); } });
+      btns[k]=b; });
+    stage.appendChild(h("div",{class:"ex"}, h("div",{class:"qn"}, h("span",{class:"n",text:"?"}), h("div",{text:q.q})), h("div",{class:"opts"},perm.map(function(k){return btns[k]})), fb));
+  }
+  function nextBtn(){ var b=h("button",{class:"btn sm",type:"button",text: st.i<l.steps.length-1 ? "Passo seguinte →" : "Terminar"}); b.addEventListener("click",function(){ st.i++; st.phase="main"; step(); }); return h("div",{style:"margin-top:8px"},b); }
+  function end(){
+    var first=st.res.filter(function(x){return x==="main"}).length, alt=st.res.filter(function(x){return x==="alt"}).length, hint=st.res.filter(function(x){return x==="hint"}).length;
+    S.lab[l.id]={done:true, res:st.res.slice(), at:Date.now()}; save();
+    var msg = hint ? "Ainda há passos difíceis para ti. Revê a etapa indicada e volta a fazer este laboratório." : alt ? "Conseguiste com a ajuda da segunda explicação. Está no bom caminho." : "Excelente: percebeste tudo à primeira.";
+    var again=h("button",{class:"btn ghost",type:"button",text:"Repetir"}); again.addEventListener("click",function(){ go("laboratorio",{lab:l.id}); });
+    var et=h("button",{class:"btn quiet",type:"button",text:"Rever a etapa "+CONCEPTS[l.c].etapa}); et.addEventListener("click",function(){ var f=findEtapa(CONCEPTS[l.c].etapa); if(f && unlocked(f.li)) go("percurso",{etapa:f.e.id}); else go("percurso"); });
+    var nx=LABS[LABS.indexOf(l)+1]; var nb=nx?h("button",{class:"btn",type:"button",text:"Próximo: "+nx.t}):null; if(nb) nb.addEventListener("click",function(){ go("laboratorio",{lab:nx.id}); });
+    stage.appendChild(h("div",{class:"card stack"}, h("h3",{text:"Resumo"}), h("p",{text:"À primeira: "+first+" · com a 2.ª explicação: "+alt+" · com ajuda: "+hint+"."}), h("p",{text:msg}), h("div",{class:"row"}, nb, again, et)));
+  }
+  step();
+}
+
+/* ---------- TESTE ---------- */
+function scoreQ(q, a){
+  if(a==null) return {s:0, mis:[]};
+  if(q.type==="choice"){ var ok=a===q.ans; return {s:ok?1:0, mis: !ok&&q.mis&&q.mis[a] ? [q.mis[a]] : []}; }
+  if(q.type==="multi"){ var hits=0,wrong=0,mis=[]; a.forEach(function(i){ if(q.ans.indexOf(i)>=0) hits++; else { wrong++; if(q.mis&&q.mis[i]) mis.push(q.mis[i]); } }); return {s:(hits===q.ans.length&&!wrong)?1:Math.max(0,(hits-wrong)/q.ans.length), mis:mis}; }
+  if(q.type==="order"){ var ok2=0; a.forEach(function(ii,pos){ if(ii===pos) ok2++; }); return {s:ok2/q.items.length, mis:[]}; }
+  if(q.type==="open"){ var v=norm(a), got=0, found=[]; q.groups.forEach(function(g){ var hit=g.k.some(function(k){return v.indexOf(norm(k))>=0}); if(hit){got++; found.push(g.n);} }); return {s:Math.min(1,got/q.min), mis:[], found:found}; }
+  return {s:0,mis:[]};
+}
+function ansText(q,a){ if(a==null) return "(sem resposta)"; if(q.type==="choice") return strip(q.opts[a]); if(q.type==="multi") return a.map(function(i){return strip(q.opts[i])}).join("; ")||"(nada)"; if(q.type==="order") return a.map(function(i){return q.items[i]}).join(" → "); return a; }
+function rightText(q){ if(q.type==="choice") return strip(q.opts[q.ans]); if(q.type==="multi") return q.ans.map(function(i){return strip(q.opts[i])}).join("; "); if(q.type==="order") return q.items.join(" → "); return q.model; }
+function rTeste(){
+  var el=$("#view-teste"); el.innerHTML="";
+  if(!identified()){ gate(el, function(){ rTeste(); }); return; }
+  var T=S.test;
+  if(T && T.res && !(route.sub&&route.sub.run)) return rReport(el);
+  if(route.sub && route.sub.run && T && !T.res) return rRun(el);
+  el.appendChild(h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"Teste de conhecimento"}), h("h2",{text:"20 perguntas, do mais simples ao desafio"}),
+    h("p",{text:"Há perguntas conceptuais, cenários reais, problemas e desafios. Só vês a correção no fim, com um relatório: domínio por conceito, explicação de cada erro, equívocos repetidos e um plano de revisão."}),
+    h("p",{class:"muted small",text:"Dica: faz primeiro o Percurso. Mas podes fazer o teste a qualquer momento."})));
+  var b=h("button",{class:"btn",type:"button",text:"Começar o teste"}); b.addEventListener("click",function(){ S.test={id:"t"+Date.now().toString(36), at:Date.now(), i:0, a:[]}; save(); go("teste",{run:1}); });
+  el.appendChild(h("div",null,b));
+}
+function rRun(el){
+  var T=S.test; var i=T.i||0; var q=TEST[i];
+  el.appendChild(h("div",{class:"row"}, h("b",{text:"Pergunta "+(i+1)+" de "+TEST.length}), h("span",{class:"tag",text:q.k}), h("span",{class:"tag d"+q.d,text:"Nível "+q.d})));
+  var pr=h("div",{class:"tprog"}); TEST.forEach(function(_,k){ pr.appendChild(h("i",{class:k<i?"d":k===i?"c":""})); }); el.appendChild(pr);
+  var box=h("div",{class:"ex"}); box.appendChild(h("div",{class:"qn"}, h("span",{class:"n",text:String(i+1)}), h("div",{html:q.q})));
+  var f=figs(q); if(f) box.appendChild(f);
+  var cur = T.a[i]!=null ? JSON.parse(JSON.stringify(T.a[i])) : (q.type==="multi"?[]:q.type==="order"?shuffle(q.items.map(function(_,k){return k}),seedOf(T.id+i)):q.type==="open"?"":null);
+  if(q.type==="order" && cur.every(function(v,k){return v===k})) cur.reverse();
+  var body=h("div",{class:"stack"}); box.appendChild(body);
+  if(q.type==="choice"||q.type==="multi"){ var perm=shuffle(q.opts.map(function(_,k){return k}), seedOf(T.id+"q"+i)); var bs=q.opts.map(function(o,k){ var b=h("button",{class:"opt"+(q.type==="multi"?" multi":""),type:"button","aria-pressed":String(q.type==="multi"?cur.indexOf(k)>=0:cur===k)}, h("span",{class:"box"}), h("span",{html:o}));
+      b.addEventListener("click",function(){ if(q.type==="multi"){ var j=cur.indexOf(k); if(j<0) cur.push(k); else cur.splice(j,1); } else cur=k; bs.forEach(function(x,m){ x.setAttribute("aria-pressed", String(q.type==="multi"?cur.indexOf(m)>=0:cur===m)); }); }); return b; });
+    body.appendChild(h("div",{class:"opts"},perm.map(function(k){return bs[k]}))); }
+  if(q.type==="order"){ var list=h("div",{class:"olist"}); var draw=function(){ list.innerHTML=""; cur.forEach(function(ii,pos){ var up=h("button",{type:"button","aria-label":"Subir",text:"▲"}), dn=h("button",{type:"button","aria-label":"Descer",text:"▼"}); up.disabled=pos===0; dn.disabled=pos===cur.length-1;
+      up.addEventListener("click",function(){ var t=cur[pos-1]; cur[pos-1]=cur[pos]; cur[pos]=t; draw(); }); dn.addEventListener("click",function(){ var t=cur[pos+1]; cur[pos+1]=cur[pos]; cur[pos]=t; draw(); });
+      list.appendChild(h("div",{class:"oitem"}, h("span",{class:"num",text:(pos+1)+"."}), h("span",{class:"t",text:q.items[ii]}), up, dn)); }); }; draw(); body.appendChild(list); }
+  if(q.type==="open"){ var ta=h("textarea",{"aria-label":"A tua resposta",placeholder:"Escreve a tua resposta com frases completas."}); ta.value=cur||""; ta.addEventListener("input",function(){cur=ta.value}); body.appendChild(ta); }
+  var err=h("p",{class:"status bad",role:"status"});
+  var nx=h("button",{class:"btn",type:"button",text: i<TEST.length-1?"Seguinte →":"Terminar e ver o relatório"});
+  nx.addEventListener("click",function(){ var empty = cur==null || (Array.isArray(cur)&&!cur.length&&q.type==="multi") || (q.type==="open"&&norm(cur).split(" ").length<3);
+    if(empty){ err.textContent = q.type==="open"?"Escreve pelo menos uma frase.":"Escolhe uma resposta."; return; }
+    T.a[i]=cur; T.i=i+1; save(); if(T.i>=TEST.length){ finishTest(); go("teste"); } else { el.innerHTML=""; rRun(el); window.scrollTo(0,0); } });
+  var pv=h("button",{class:"btn quiet",type:"button",text:"← Anterior"}); pv.disabled=i===0; pv.addEventListener("click",function(){ T.a[i]=cur; T.i=i-1; save(); el.innerHTML=""; rRun(el); });
+  box.appendChild(err); box.appendChild(h("div",{class:"row"}, pv, nx));
+  el.appendChild(box);
+}
+function finishTest(){
+  var T=S.test, tot=0, byD={C:[0,0],B:[0,0],A:[0,0]}, byC={}, wrong=[], misT={};
+  TEST.forEach(function(q,i){ var r=scoreQ(q,T.a[i]); tot+=r.s; byD[q.d][0]+=r.s; byD[q.d][1]++; byC[q.c]=byC[q.c]||[0,0]; byC[q.c][0]+=r.s; byC[q.c][1]++;
+    r.mis.forEach(function(m){ misT[m]=(misT[m]||0)+1; });
+    if(r.s<0.999) wrong.push({i:i, s:r.s, mis:r.mis, found:r.found}); });
+  var all=[]; TEST.forEach(function(q,i){ all=all.concat(scoreQ(q,T.a[i]).mis); }); noteMis(all);
+  T.res={pts:tot, p:tot/TEST.length, byD:byD, byC:byC, wrong:wrong, misT:misT, at:Date.now()}; save();
+}
+function weakList(R){ return Object.keys(R.byC).map(function(c){ return {c:c, p:R.byC[c][0]/R.byC[c][1]}; }).filter(function(x){return x.p<PASS}).sort(function(a,b){return a.p-b.p}); }
+function repeatedMis(R){ var out={}; Object.keys(S.mis).forEach(function(m){ if(S.mis[m]>=2) out[m]=S.mis[m]; }); Object.keys(R.misT).forEach(function(m){ if(R.misT[m]>=2) out[m]=Math.max(out[m]||0,R.misT[m]); }); return out; }
+function resultText(full){
+  var T=S.test, R=T.res, p=pct(R.p), L=[];
+  L.push(APP+" – Portugal no século XVIII (HGP 6.º ano)");
+  L.push("Nome: "+(S.student.nome||"—")+" | Turma: "+(S.student.turma||"—"));
+  L.push("Data: "+new Date(R.at).toLocaleString("pt-PT"));
+  L.push("Pontuação: "+fmt(R.pts)+"/"+TEST.length+" | "+p+"% ("+classif(p)+")");
+  L.push("Por dificuldade: "+["C","B","A"].map(function(d){ var x=R.byD[d]; return d+" "+pct(x[0]/x[1])+"%"; }).join(" · "));
+  L.push("Por conceito: "+Object.keys(R.byC).map(function(c){ return CONCEPTS[c].n+" "+pct(R.byC[c][0]/R.byC[c][1])+"%"; }).join(" · "));
+  L.push("Perguntas erradas ou incompletas: "+(R.wrong.length? R.wrong.map(function(w){ return (w.i+1)+(w.s>0?" ("+pct(w.s)+"%)":""); }).join(", ") : "nenhuma"));
+  var wk=weakList(R); L.push("Fraquezas: "+(wk.length? wk.map(function(x){return CONCEPTS[x.c].n}).join("; ") : "nenhuma abaixo de 60%"));
+  if(full){ var rm=repeatedMis(R); var ks=Object.keys(rm); L.push("Equívocos repetidos: "+(ks.length? ks.map(function(m){return MIS[m]+" (x"+rm[m]+")"}).join(" | ") : "nenhum")); }
+  L.push("Recapitulações (mini-testes): "+LEVELS.map(function(Lv){ var x=S.lv[Lv.id]; return "Nível "+Lv.id+" "+(x&&x.best!=null?pct(x.best)+"%"+" ("+x.tries+" tent.)":"não feito"); }).join(" · "));
+  var labs=LABS.filter(function(l){return S.lab[l.id]&&S.lab[l.id].done});
+  L.push("Laboratório: "+labs.length+"/"+LABS.length+" concluídos"+(labs.length? " – "+labs.map(function(l){ var r=S.lab[l.id].res; return l.id+" "+r.filter(function(x){return x==="main"}).length+"/"+r.length+" à 1.ª"; }).join(", ") : ""));
+  return L.join("\n");
+}
+function payload(test){
+  var T=S.test, R=T.res, p=pct(R.p);
+  var d={jogo:APP+" (HGP 6.º ano)", nome:(test?"[TESTE] ":"")+(S.student.nome||"Professor"), turma:S.student.turma||(test?"—":""), data:new Date(R.at).toLocaleString("pt-PT"),
+    pontuacao:fmt(R.pts)+"/"+TEST.length, percentagem:p+"%", classificacao:classif(p), detalhes:(test?"[TESTE] ":"")+resultText(true)};
+  d.dados=JSON.stringify({nome:d.nome,turma:d.turma,data:d.data,pontuacao:R.pts,percentagem:p,classificacao:d.classificacao,porDificuldade:R.byD,porConceito:R.byC,erradas:R.wrong.map(function(w){return w.i+1}),equivocos:repeatedMis(R),miniTestes:S.lv,laboratorio:S.lab});
+  return d;
+}
+function sendGAS(url, d){ var body=new URLSearchParams(); for(var k in d) body.append(k,d[k]); return fetch(url,{method:"POST",mode:"no-cors",body:body}); }
+function rReport(el){
+  var T=S.test, R=T.res, p=pct(R.p), c=cfg();
+  el.appendChild(h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"Relatório do teste"}), h("h2",{text:"Os teus resultados"})));
+  el.appendChild(h("div",{class:"card row", style:"gap:24px"}, h("div",{class:"score",text:p+"%"}), h("div",{class:"stack", style:"gap:4px"}, h("b",{text:classif(p)+" · "+fmt(R.pts)+" em "+TEST.length+" pontos"}),
+    h("span",{class:"small muted",text:"Por dificuldade: "+["C","B","A"].map(function(d){var x=R.byD[d]; return "Nível "+d+" "+pct(x[0]/x[1])+"%"}).join(" · ")}), S.student.nome?h("span",{class:"small muted",text:S.student.nome+" · "+S.student.turma}):null)));
+  // envio
+  if(needId()){
+    var sb=h("div",{class:"card stack"}, h("h3",{text:"Enviar ao professor"}));
+    var st=h("p",{class:"status",role:"status"});
+    if(c.gas){ var state=S.sent[T.id];
+      if(state==="ok"){ st.textContent="Os resultados foram enviados ao professor."; st.className="status ok"; }
+      else if(!state){ S.sent[T.id]="a enviar"; save(); st.textContent="A enviar os resultados…";
+        sendGAS(c.gas, payload(false)).then(function(){ S.sent[T.id]="ok"; save(); st.textContent="Os resultados foram enviados ao professor."; st.className="status ok"; },
+          function(){ S.sent[T.id]="falhou"; save(); st.textContent="Não foi possível enviar automaticamente (sem internet?). Usa o e-mail ou copia os resultados."; st.className="status bad"; addRetry(); }); }
+      else { st.textContent = state==="falhou" ? "O envio automático falhou. Usa o e-mail ou copia os resultados." : "Envio em curso ou interrompido."; st.className="status bad"; addRetry(); }
+    }
+    sb.appendChild(st);
+    var rr=h("div",{class:"row"});
+    function addRetry(){ if(rr.querySelector(".retry")) return; var b=h("button",{class:"btn quiet sm retry",type:"button",text:"Tentar enviar de novo"}); b.addEventListener("click",function(){ st.textContent="A enviar…"; st.className="status"; sendGAS(c.gas,payload(false)).then(function(){ S.sent[T.id]="ok"; save(); st.textContent="Os resultados foram enviados ao professor."; st.className="status ok"; b.remove(); }, function(){ st.textContent="Continua sem ser possível enviar. Usa o e-mail."; st.className="status bad"; }); }); rr.appendChild(b); }
+    if(c.email){ var subj=APP+" – "+S.student.nome+" ("+S.student.turma+") – "+p+"%"; var href="mailto:"+encodeURIComponent(c.email)+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(resultText(false));
+      rr.appendChild(h("a",{class:"btn",href:href,text:"Enviar por e-mail"})); }
+    var cs=h("span",{class:"status"}); var cb=h("button",{class:"btn ghost",type:"button",text:"Copiar resultados"}); cb.addEventListener("click",function(){ copyText(resultText(true), cs); });
+    rr.appendChild(cb); rr.appendChild(cs); sb.appendChild(rr);
+    if(c.email) sb.appendChild(h("p",{class:"small muted",html:"Se o programa de correio não abrir, copia os resultados e envia-os para <b>"+c.email+"</b>."}));
+    el.appendChild(sb);
+  }
+  // domínio por conceito
+  var cb2=h("div",{class:"cbars"});
+  Object.keys(R.byC).forEach(function(k){ var x=R.byC[k], pp=x[0]/x[1], col = pp>=0.8?"var(--ok)":pp>=PASS?"var(--lv-b)":"var(--bad)";
+    cb2.appendChild(h("div",{class:"cbar", style:"--c:"+col}, h("span",{text:CONCEPTS[k].n}), h("div",{class:"bar"}, h("i",{style:"width:"+Math.max(3,pct(pp))+"%"})), h("b",{text:pct(pp)+"%"}))); });
+  el.appendChild(h("div",{class:"card stack"}, h("h3",{text:"Domínio por conceito"}), cb2, h("p",{class:"small muted",text:"Verde: 80% ou mais · amarelo: 60–79% · vermelho: abaixo de 60%."})));
+  // erros
+  var er=h("div",{class:"errs"});
+  if(!R.wrong.length) er.appendChild(h("p",{text:"Não erraste nenhuma pergunta. Parabéns!"}));
+  R.wrong.forEach(function(w){ var q=TEST[w.i]; er.appendChild(h("div",{class:"err stack", style:"gap:4px"}, h("b",{html:(w.i+1)+". "+q.q}),
+    h("span",{class:"small",text:"A tua resposta: "+ansText(q,T.a[w.i])+(w.s>0?" ("+pct(w.s)+"% certa)":"")}),
+    h("span",{class:"small",html:"<b>Resposta certa:</b> "+rightText(q)}),
+    h("span",{class:"small",html:"<b>Porquê:</b> "+q.exp}),
+    w.found&&q.type==="open"?h("span",{class:"small muted",text:"Ideias encontradas: "+(w.found.join(", ")||"nenhuma")+". Faltou: "+q.groups.filter(function(g){return w.found.indexOf(g.n)<0}).map(function(g){return g.n}).join(", ")+"."}):null,
+    w.mis.length?h("span",{class:"small",html:"<b>Equívoco:</b> "+w.mis.map(function(m){return MIS[m]}).join(" ")}):null)); });
+  el.appendChild(h("div",{class:"card stack"}, h("h3",{text:"Os teus erros, explicados"}), er));
+  // equívocos repetidos
+  var rm=repeatedMis(R), ks=Object.keys(rm);
+  el.appendChild(h("div",{class:"card stack"}, h("h3",{text:"Equívocos repetidos"}), ks.length ? h("ul",{class:"mis"}, ks.map(function(m){ return h("li",null, MIS[m]+" ", h("span",{class:"pill warn",text:rm[m]+" vezes"})); })) : h("p",{class:"muted",text:"Não repetiste nenhum equívoco (no teste e nos exercícios)."}),
+    h("p",{class:"small muted",text:"Conta os erros típicos feitos no teste, nas etapas, nos mini-testes e no Laboratório."})));
+  // plano
+  var wk=weakList(R); var plan=h("ol",{class:"plan"});
+  var mid=Object.keys(R.byC).map(function(k){return {c:k,p:R.byC[k][0]/R.byC[k][1]}}).filter(function(x){return x.p>=PASS&&x.p<0.8});
+  function planRow(x, tag){ var C=CONCEPTS[x.c], f=findEtapa(C.etapa), lab=LABS.find(function(l){return l.id===C.lab});
+    var b1=h("button",{class:"btn sm",type:"button",text:"Etapa "+C.etapa}); b1.addEventListener("click",function(){ if(f&&unlocked(f.li)) go("percurso",{etapa:C.etapa}); else go("percurso"); });
+    var b2=h("button",{class:"btn sm ghost",type:"button",text:"Laboratório"}); b2.addEventListener("click",function(){ go("laboratorio",{lab:C.lab}); });
+    return h("li",null, h("span",{class:"pill "+tag,text:pct(x.p)+"%"}), h("div",null, h("b",{text:C.n}), h("div",{class:"small muted",text:"Rever «"+(f?f.e.t:"")+"» e fazer o laboratório «"+(lab?lab.t:"")+"»."})), b1, b2); }
+  wk.forEach(function(x){ plan.appendChild(planRow(x,"bad")); });
+  mid.forEach(function(x){ plan.appendChild(planRow(x,"warn")); });
+  if(!wk.length && !mid.length) plan.appendChild(h("li",null, h("div",null, h("b",{text:"Domínio muito bom em todos os conceitos."}), h("div",{class:"small muted",text:"Desafio: faz as perguntas de desenvolvimento do nível A (A1, A2 e A4) sem olhar para os conceitos e compara com a resposta-modelo."}))));
+  el.appendChild(h("div",{class:"card stack"}, h("h3",{text:"O teu plano de revisão"}), h("p",{class:"small muted",text:"Por ordem de prioridade: primeiro o que está abaixo de 60%, depois o que está entre 60% e 79%."}), plan,
+    h("p",{class:"small",text:"Depois de rever, volta a fazer o mini-teste do nível correspondente e repete o Teste."})));
+  var again=h("button",{class:"btn ghost",type:"button",text:"Fazer o teste de novo"}); again.addEventListener("click",function(){ S.test={id:"t"+Date.now().toString(36), at:Date.now(), i:0, a:[]}; save(); go("teste",{run:1}); });
+  el.appendChild(h("div",null,again));
+}
+
+/* ---------- GLOSSÁRIO ---------- */
+function rGloss(){
+  var el=$("#view-glossario"); el.innerHTML="";
+  var inp=h("input",{type:"text",id:"gl-q",placeholder:"Procurar um termo…","aria-label":"Procurar no glossário",style:"width:100%;max-width:420px"});
+  var g=h("div",{class:"gl"});
+  function draw(){ var q=norm(inp.value); g.innerHTML=""; GLOSS.filter(function(x){ return !q || norm(x[0]+" "+x[1]).indexOf(q)>=0; }).forEach(function(x){ g.appendChild(h("div",null, h("b",{text:x[0]}), h("span",{text:x[1]}))); });
+    if(!g.children.length) g.appendChild(h("p",{class:"muted",text:"Nenhum termo encontrado."})); }
+  inp.addEventListener("input",draw);
+  el.appendChild(h("div",{class:"stack"}, h("div",{class:"eyebrow",text:"Glossário"}), h("h2",{text:"Palavras do século XVIII"}), inp)); el.appendChild(g); draw();
+}
+
+/* ---------- PROFESSOR ---------- */
+var GAS_CODE = [
+"// Rumo do Século XVIII – registo de resultados numa Folha de Cálculo Google",
+"const FOLHA = 'Resultados';",
+"const EMAIL_PROFESSOR = ''; // opcional: escreva aqui o seu e-mail para receber cada resultado",
+"",
+"function doPost(e) {",
+"  const p = (e && e.parameter) || {};",
+"  let d = p;",
+"  if (e && e.postData && e.postData.type === 'application/json') {",
+"    try { d = JSON.parse(e.postData.contents); } catch (err) {}",
+"  }",
+"  const ss = SpreadsheetApp.getActiveSpreadsheet();",
+"  const sh = ss.getSheetByName(FOLHA) || ss.insertSheet(FOLHA);",
+"  if (sh.getLastRow() === 0) {",
+"    sh.appendRow(['Data', 'Jogo', 'Nome', 'Turma', 'Pontuação', 'Percentagem', 'Classificação', 'Detalhes']);",
+"  }",
+"  sh.appendRow([new Date(), d.jogo || '', d.nome || '', d.turma || '', d.pontuacao || '',",
+"                d.percentagem || '', d.classificacao || '', d.detalhes || '']);",
+"  if (EMAIL_PROFESSOR) {",
+"    MailApp.sendEmail(EMAIL_PROFESSOR, (d.jogo || 'Resultados') + ' – ' + (d.nome || ''), d.detalhes || '');",
+"  }",
+"  return ContentService.createTextOutput(JSON.stringify({ ok: true }))",
+"    .setMimeType(ContentService.MimeType.JSON);",
+"}",
+"",
+"function doGet() {",
+"  return ContentService.createTextOutput('O registo de resultados está ativo.');",
+"}"].join("\n");
+var profWired=false;
+function rProf(){
+  var ml=$("#prof-mis"); if(ml && !ml.children.length) Object.keys(MIS).forEach(function(k){ ml.appendChild(h("li",{text:MIS[k]})); });
+  $("#gas-code").textContent=GAS_CODE;
+  var e=$("#cfg-email"), g=$("#cfg-gas"), st=$("#cfg-status"); e.value=S.cfg.email||""; g.value=S.cfg.gas||"";
+  if(profWired) return; profWired=true;
+  function msg(t,ok){ st.textContent=t; st.className="status "+(ok?"ok":"bad"); }
+  function valid(){ var em=e.value.trim(), gs=g.value.trim(); if(em && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg("O e-mail não parece válido.",false); return false; } if(gs && !/^https:\/\/script\.google(usercontent)?\.com\//.test(gs)){ msg("O endereço do Apps Script deve começar por https://script.google.com/",false); return false; } return true; }
+  $("#cfg-save").addEventListener("click",function(){ if(!valid()) return; S.cfg={email:e.value.trim(), gas:g.value.trim()}; save(); msg("Guardado. "+(needId()?"O nome e a turma passam a ser pedidos.":"Sem envio configurado."),true); });
+  $("#cfg-test").addEventListener("click",function(){ if(!valid()) return; S.cfg={email:e.value.trim(), gas:g.value.trim()}; save(); var c=cfg(); if(!c.gas){ msg("Escreva primeiro o endereço do Apps Script.",false); return; }
+    var keep=S.test; S.test={id:"teste",res:{pts:20,p:1,byD:{C:[5,5],B:[7,7],A:[8,8]},byC:{imperio:[2,2]},wrong:[],misT:{},at:Date.now()}};
+    var d=payload(true); S.test=keep; msg("A enviar…",true);
+    sendGAS(c.gas,d).then(function(){ msg("Resultado de teste enviado. Confirme a linha [TESTE] na folha «Resultados».",true); }, function(){ msg("O envio falhou. Verifique o endereço e a ligação à internet. Na página online o envio pode estar bloqueado: experimente o ficheiro do .zip.",false); }); });
+  $("#cfg-download").addEventListener("click",function(){ if(!valid()) return; S.cfg={email:e.value.trim(), gas:g.value.trim()}; save();
+    var html=studentHTML(); try{ var blob=new Blob([html],{type:"text/html"}); var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="Portugal-Seculo-XVIII-alunos.html"; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },1500);
+      msg("Descarga iniciada: Portugal-Seculo-XVIII-alunos.html. Guarde-o na pasta das imagens.",true); }catch(err){ msg("O navegador bloqueou a descarga.",false); } });
+  $("#gas-copy").addEventListener("click",function(){ copyText(GAS_CODE, $("#gas-copy-st")); });
+  var rs=$("#reset-all"), rst=$("#reset-st");
+  rs.addEventListener("click",function(){ rst.innerHTML=""; var y=h("button",{class:"btn sm",type:"button",text:"Sim, apagar"}), n=h("button",{class:"btn quiet sm",type:"button",text:"Cancelar"});
+    y.addEventListener("click",function(){ var c=S.cfg; S=blank(); S.cfg=c; save(); rst.textContent="Progresso apagado (a configuração foi mantida)."; rst.className="status ok"; });
+    n.addEventListener("click",function(){ rst.innerHTML=""; }); rst.appendChild(document.createTextNode("Apagar todo o progresso? ")); rst.appendChild(y); rst.appendChild(n); });
+}
+function studentHTML(){
+  var c=cfg(); var conf=JSON.stringify({mode:"aluno", email:c.email, gas:c.gas});
+  var SO="<scr"+"ipt id=\"app-config\">", SC="</scr"+"ipt>";
+  var html=PRISTINE.replace(new RegExp(SO.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"[\\s\\S]*?"+SC.replace(/\//g,"\\/")), SO+"window.APP_CONFIG="+conf+";"+SC);
+  var A="<!"+"--PROF-START--"+">", B="<!"+"--PROF-END--"+">"; var i=html.indexOf(A), j=html.indexOf(B);
+  if(i>=0 && j>i) html=html.slice(0,i)+html.slice(j+B.length);
+  html=html.replace(/<title>[^<]*<\/title>/, "<title>Rumo do Século XVIII · Alunos</title>");
+  return html;
+}
+
+/* ---------- arranque ---------- */
+if(STUDENT){ var tp=$("#tab-prof"); if(tp) tp.remove(); var vp=$("#view-professor"); if(vp) vp.remove(); }
+document.querySelectorAll("nav.tabs button").forEach(function(b){ b.addEventListener("click",function(){ go(b.dataset.v); }); });
+function fromHash(){ var v=(location.hash||"").replace("#",""); if(VIEWS.indexOf(v)<0) v="inicio"; route={v:v,sub:null}; render(); }
+window.addEventListener("hashchange", function(){ var v=(location.hash||"").replace("#",""); if(v!==route.v) fromHash(); });
+fromHash();
+})();
+
+</script></body></html>

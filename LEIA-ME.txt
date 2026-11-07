@@ -1,0 +1,24 @@
+ROTA DO SÉCULO XVIII – Portugal no século XVIII (HGP 6.º ano)
+
+Conteúdo da pasta
+- Portugal-Seculo-XVIII-professor.html: aplicação original, com a área do Professor
+  (configuração do envio, código do Apps Script, apagar progresso).
+- 34 imagens .jpg tiradas das fichas, já com os nomes que a aplicação usa.
+
+Usar em aula sem internet
+1. Copie a pasta inteira para o computador (as imagens têm de ficar ao lado do ficheiro .html).
+2. Abra Portugal-Seculo-XVIII-professor.html no navegador (Chrome, Edge ou Firefox).
+   Sem internet, os tipos de letra passam para os do sistema; tudo o resto funciona.
+
+Preparar a versão dos alunos
+1. No separador Professor, escreva o seu e-mail e, se quiser, o endereço do Google Apps Script.
+2. Carregue em «Guardar» e depois em «Enviar resultado de teste» (precisa de internet).
+3. Carregue em «Descarregar aplicação configurada». Guarde Portugal-Seculo-XVIII-alunos.html
+   nesta mesma pasta, ao lado do original.
+4. Distribua a pasta com o ficheiro dos alunos e as imagens. O ficheiro do professor pode ser retirado.
+
+Notas
+- O progresso fica guardado no navegador de cada computador. Na versão dos alunos, o botão
+  discreto «Novo aluno» no ecrã inicial apaga o progresso e volta a pedir nome e turma.
+- O envio automático e o e-mail precisam de internet no fim do Teste. Sem internet, use
+  «Copiar resultados».
